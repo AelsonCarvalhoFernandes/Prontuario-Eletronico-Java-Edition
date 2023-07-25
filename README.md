@@ -2,7 +2,9 @@
 
 ### Descrição:
 
+### Andamento do projeto
 
+trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 
 ### Integrantes do projeto:
 
