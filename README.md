@@ -16,11 +16,11 @@
 
 ### Features:
 
-- [] Cadastro de usuários
-- [] Cadastro de receitas
-- [] Cadastro de Receitas
-- [] Cadastro de Laudos
-- [] Aplicação desktop
-- [] Site para os pacientes
+- [ ] Cadastro de usuários
+- [ ] Cadastro de receitas
+- [ ] Cadastro de Receitas
+- [ ] Cadastro de Laudos
+- [ ] Aplicação desktop
+- [ ] Site para os pacientes
 
 ### Como utilizar o projeto:
