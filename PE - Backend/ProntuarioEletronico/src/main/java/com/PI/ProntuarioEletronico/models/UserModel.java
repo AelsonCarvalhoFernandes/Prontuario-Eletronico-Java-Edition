@@ -30,6 +30,10 @@ public class UserModel implements UserDetails {
     private String dataEmissaoCrm;
     private String cns;
     private String cpf;
+
+
+
+    private String rg;
     private Date dataNascimento;
     private Roles roles;
     private Date dataCadastro;
@@ -44,6 +48,14 @@ public class UserModel implements UserDetails {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getFirstName() {
