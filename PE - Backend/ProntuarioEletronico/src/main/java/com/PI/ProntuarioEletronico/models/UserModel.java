@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -30,14 +31,15 @@ public class UserModel implements UserDetails {
     private String dataEmissaoCrm;
     private String cns;
     private String cpf;
-
-
-
     private String rg;
     private Date dataNascimento;
     private Roles roles;
     private Date dataCadastro;
     private Date dataAtualizacao;
+    @OneToMany(mappedBy = "users")
+    private List<ReceitaModel> receitas;
+    @OneToMany(mappedBy = "medico")
+    private List<ReceitaModel> receitasMedico;
 
 
     // Getters e Setters dos atributos

@@ -1,2 +1,4 @@
-package com.PI.ProntuarioEletronico.services;public class TokenService {
+package com.PI.ProntuarioEletronico.services;
+
+public class TokenService {
 }

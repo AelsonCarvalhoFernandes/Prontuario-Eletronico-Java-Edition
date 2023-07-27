@@ -18,11 +18,9 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 
 ### Features:
 
-- [ ] Cadastro de usuários
+- [ x ] Cadastro de usuários
 - [ ] Cadastro de receitas
 - [ ] Cadastro de Receitas
 - [ ] Cadastro de Laudos
 - [ ] Aplicação desktop
 - [ ] Site para os pacientes
-
-### Como utilizar o projeto:
