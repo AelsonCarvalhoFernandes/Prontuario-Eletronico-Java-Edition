@@ -1,10 +1,10 @@
 import './App.css'
-import Botao from './components/Botao/Botao'
+import { Header } from './components/Header/Header'
 
 function App() {
   return (
     <>
-      <Botao name="teste" estilo="success"/>
+      <Header/>
     </>
   )
 }

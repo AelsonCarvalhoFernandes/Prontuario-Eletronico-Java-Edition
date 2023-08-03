@@ -9,6 +9,9 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 ### Integrantes do projeto:
 
 - Aelson Carvalho Fernandes (Backend)
+- Kaike Marcelo ( App Desktop )
+- Vitor Loureiro ( Testes da API)
+
 
 ### Requisitos:
 
@@ -18,7 +21,7 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 
 ### Features:
 
-- [ x ] Cadastro de usuários
+- [x] Cadastro de usuários
 - [ ] Cadastro de receitas
 - [ ] Cadastro de Receitas
 - [ ] Cadastro de Laudos

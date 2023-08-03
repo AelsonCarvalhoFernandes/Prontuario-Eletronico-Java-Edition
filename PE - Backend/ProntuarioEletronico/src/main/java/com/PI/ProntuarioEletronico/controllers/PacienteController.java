@@ -2,7 +2,7 @@ package com.PI.ProntuarioEletronico.controllers;
 
 import com.PI.ProntuarioEletronico.models.UserModel;
 import com.PI.ProntuarioEletronico.repositories.UserRepository;
-import com.PI.ProntuarioEletronico.resources.dtos.CadastroPaciente;
+import com.PI.ProntuarioEletronico.resources.dtos.cadastro.CadastroPaciente;
 import com.PI.ProntuarioEletronico.resources.enums.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,12 +1,21 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
+import api from "../resources/Api";
 
-const AuthContext = createContext({})
+export const AuthContext = createContext({})
 
-const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}) => {
 
+    const [auth, setAuth] = useState(sessionStorage.getItem("auth"))
+
+    const authenticate = (email, password) => {
+        api.post("/auth", {"email": email, "password": password})
+        .then((e) =>{
+            sessionStorage.setItem("auth", e)
+        })
+    }
 
     return (
-        <AuthContext.Provider>
+        <AuthContext.Provider value={{auth, authenticate}}>
             {children}
         </AuthContext.Provider>
     )

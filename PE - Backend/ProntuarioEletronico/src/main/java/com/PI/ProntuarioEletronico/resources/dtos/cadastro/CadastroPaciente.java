@@ -1,4 +1,4 @@
-package com.PI.ProntuarioEletronico.resources.dtos;
+package com.PI.ProntuarioEletronico.resources.dtos.cadastro;
 
 import java.util.Date;
 

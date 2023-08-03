@@ -1,14 +1,22 @@
 import Style from "./Header.module.css"
+import { useContext } from "react"
 
-function Header(){
+export function Header(){
     return (
         <header>
-            <nav>
+            <div className={Style.hamburger}>
+                <img src="" alt="" />
+            </div>
+            <nav className={Style.nagecacao}>
                 <ul>
                     <li>Pagina Inicial</li>
                     <li>Sobre</li>
                     <li>Ajuda</li>
                 </ul>
+
+                <div className={Style.cellLoginConteiner}>
+
+                </div>
             </nav>
 
             <div className={Style.desktopLoginConteiner}>
