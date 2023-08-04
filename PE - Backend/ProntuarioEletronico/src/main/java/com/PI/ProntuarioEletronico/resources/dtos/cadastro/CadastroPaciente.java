@@ -1,5 +1,6 @@
 package com.PI.ProntuarioEletronico.resources.dtos.cadastro;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public record CadastroPaciente(String firstName,
@@ -14,5 +15,6 @@ public record CadastroPaciente(String firstName,
                                String numero,
                                String bairro,
                                String cidade,
-                               Date dataNascimento) {
+                               String estado,
+                               LocalDateTime dataNascimento) {
 }

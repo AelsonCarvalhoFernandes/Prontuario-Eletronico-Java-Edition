@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -27,15 +28,16 @@ public class UserModel implements UserDetails {
     private String numero;
     private String bairro;
     private String cidade;
+    private String estado;
     private String crm;
     private String dataEmissaoCrm;
     private String cns;
     private String cpf;
     private String rg;
-    private Date dataNascimento;
+    private LocalDateTime dataNascimento;
     private Roles roles;
-    private Date dataCadastro;
-    private Date dataAtualizacao;
+    private LocalDateTime dataCadastro;
+    private LocalDateTime dataAtualizacao;
     @OneToMany(mappedBy = "users")
     private List<ReceitaModel> receitas;
     @OneToMany(mappedBy = "medico")
@@ -43,6 +45,30 @@ public class UserModel implements UserDetails {
 
 
     // Getters e Setters dos atributos
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public List<ReceitaModel> getReceitas() {
+        return receitas;
+    }
+
+    public void setReceitas(List<ReceitaModel> receitas) {
+        this.receitas = receitas;
+    }
+
+    public List<ReceitaModel> getReceitasMedico() {
+        return receitasMedico;
+    }
+
+    public void setReceitasMedico(List<ReceitaModel> receitasMedico) {
+        this.receitasMedico = receitasMedico;
+    }
 
     public Long getId() {
         return id;
@@ -160,11 +186,11 @@ public class UserModel implements UserDetails {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public LocalDateTime getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDateTime dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -176,19 +202,19 @@ public class UserModel implements UserDetails {
         this.roles = roles;
     }
 
-    public Date getDataCadastro() {
+    public LocalDateTime getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
-    public Date getDataAtualizacao() {
+    public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(Date dataAtualizacao) {
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 
