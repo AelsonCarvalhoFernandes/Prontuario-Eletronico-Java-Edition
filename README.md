@@ -23,7 +23,7 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 
 - [x] Cadastro de usuários
 - [ ] Cadastro de receitas
-- [ ] Cadastro de Receitas
+- [ ] Cadastro de Atestados
 - [ ] Cadastro de Laudos
 - [ ] Aplicação desktop
 - [ ] Site para os pacientes

@@ -65,6 +65,20 @@ public class ReceitaDbService {
         }
     }
 
+    //************************************************************************************
+    // Pegar todas as receitas
+    //************************************************************************************ 
+    public List<ReceitaModel> findAll(){
+        try{
+
+            return receitaRepository.findAll();
+
+        }catch(Exception ex){
+            System.out.println("Houve um error ao carregar as receitas");
+            return null;
+        }
+    }
+
     //**************************************************************************************
     // Atualizar receita
     //**************************************************************************************
