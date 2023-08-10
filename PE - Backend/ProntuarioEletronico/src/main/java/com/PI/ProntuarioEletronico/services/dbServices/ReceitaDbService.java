@@ -129,25 +129,26 @@ public class ReceitaDbService {
     //*********************************************************************************
     // Atribui medicamentos a receita
     //*********************************************************************************
-    private boolean setReceituario(Long receitaId,List<ReceituarioDto> receituarios){
+    public boolean setReceituario(Long receitaId, ReceituarioDto newReceituario){
         try{
-            for (ReceituarioDto receituario : receituarios) {
 
-                ReceitaModel receita = findById(receitaId);
+            ReceitaModel receita = findById(receitaId);
 
-                if(receita == null){
-                    return false;
-                }
-
-                ReceituarioModel newReceituario = new ReceituarioModel();
-
-                newReceituario.setMedicamento(receituario.medicamento());
-                newReceituario.setUso(receituario.uso());
-
-                receituarioRepository.save(newReceituario);
-
-                receita.setDataAtualizacao(LocalDateTime.now());
+            if(receita == null){
+                return false;
             }
+
+            ReceituarioModel receituario = new ReceituarioModel();
+
+            receituario.setMedicamento(newReceituario.medicamento());
+            receituario.setUso(newReceituario.uso());
+
+            receituarioRepository.save(receituario);
+
+            receita.setDataAtualizacao(LocalDateTime.now());
+
+            receitaRepository.save(receita);
+
             return true;
 
         }catch(Exception ex){

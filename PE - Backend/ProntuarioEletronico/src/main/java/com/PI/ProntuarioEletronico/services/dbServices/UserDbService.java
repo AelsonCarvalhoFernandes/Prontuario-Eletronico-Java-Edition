@@ -84,6 +84,7 @@ public class UserDbService {
         try{
             
             List<UserModel> users = userRepository.findAll();
+
             return users;
 
         }catch(Exception ex){

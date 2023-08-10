@@ -20,7 +20,7 @@ public class PacienteController {
     public ResponseEntity getAll(){
         List<UserModel> pacientes = userDbService.findAll();
         if(pacientes == null){
-            return ResponseEntity.status(404).body("Não possui nenhum paciente cadastrado");
+            return ResponseEntity.badRequest().build();
         }
 
         return ResponseEntity.ok().body(pacientes);

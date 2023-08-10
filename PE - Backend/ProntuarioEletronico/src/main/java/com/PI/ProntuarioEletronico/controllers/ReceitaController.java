@@ -2,7 +2,10 @@ package com.PI.ProntuarioEletronico.controllers;
 
 import java.util.List;
 
+import com.PI.ProntuarioEletronico.models.ReceituarioModel;
+import com.PI.ProntuarioEletronico.resources.dtos.receitas.ReceituarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +23,18 @@ public class ReceitaController {
     @GetMapping("all")
     public ResponseEntity<List<ReceitaModel>> all(){
         List<ReceitaModel> receitas = receitaDbService.findAll();
-        return ResponseEntity.ok().body(receitas);
+        return ResponseEntity.status(HttpStatus.FOUND).body(receitas);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<ReceitaModel> getById(Long id){
         ReceitaModel receita = receitaDbService.findById(id);
 
-        return ResponseEntity.ok().body(receita);
+        if(receita == null){
+            return ResponseEntity.status((HttpStatus.NOT_FOUND)).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.FOUND).body(receita);
     }
 
     @PostMapping("create")
@@ -35,10 +42,10 @@ public class ReceitaController {
         ReceitaModel receita = receitaDbService.create(newReceita);
 
         if(receita == null){
-            return ResponseEntity.badRequest().body("Error ao criar a receita");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error ao criar a receita");
         }
 
-        return ResponseEntity.ok().body(receita);
+        return ResponseEntity.status(HttpStatus.CREATED).body(receita);
     }
 
     @PutMapping("update/{id}")
@@ -46,10 +53,10 @@ public class ReceitaController {
         ReceitaModel receita = receitaDbService.update(id, updated);
 
         if(receita == null){
-            return ResponseEntity.badRequest().body("Error ao atualizar a receita");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error ao atualizar a receita");
         }
 
-        return ResponseEntity.ok().body(receita);
+        return ResponseEntity.status(HttpStatus.CREATED).body(receita);
     }
 
     @DeleteMapping("delete/{id}")
@@ -57,11 +64,33 @@ public class ReceitaController {
         boolean deleted = receitaDbService.delete(id);
         
         if(deleted == false){
-            return ResponseEntity.badRequest().body("Error ao deletar a receita");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error ao deletar a receita");
         }
 
-        return ResponseEntity.ok().body(deleted);
+        return ResponseEntity.status(HttpStatus.OK).body(deleted);
 
+    }
+
+    @PostMapping("receituario/{id}")
+    public ResponseEntity setReceituario(@PathVariable(value = "id") Long id, ReceituarioDto recetuario){
+        boolean receituario = receitaDbService.setReceituario(id, recetuario);
+
+        if(receituario == false){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("houve um error ao adicionar um medicamento a esta receita");
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @DeleteMapping("receituario/{id}")
+    public ResponseEntity removeReceituario(@PathVariable(value = "id") Long id){
+        boolean receituario = receitaDbService.deleteReceituario(id);
+
+        if(receituario == false){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("houve um error ao remover um medicamento a esta receita");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

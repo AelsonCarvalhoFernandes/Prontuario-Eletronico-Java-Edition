@@ -70,6 +70,8 @@ public class PacienteControllerTest {
         user.setDataNascimento(cadastro.dataNascimento());
     }
 
+
+    // Testes de adição de novos usuarios
     @Test
     public void metodo_add_deve_Cadastrar_um_paciente_e_retornar_o_mesmo(){
         when(userDbService.create(cadastro)).thenReturn(user);
@@ -89,6 +91,8 @@ public class PacienteControllerTest {
         verifyNoMoreInteractions(userDbService);
     }
 
+    // Teste de retorno de todos os usuarios
+
     @Test
     public void metodo_getAll_deve_retornar_uma_lista_de_pacientes(){
         when(userDbService.findAll()).thenReturn(Collections.singletonList(user));
@@ -96,8 +100,61 @@ public class PacienteControllerTest {
     }
 
     @Test
-    public void deve_retornar_um_usuario_atualizado(){
-        when(userDbService.update(1L ,cadastro)).thenReturn(user);
+    public void metodo_getAll_deve_retornar_um_bad_request(){
+        when(userDbService.findAll()).thenReturn(null);
+        Assertions.assertEquals(ResponseEntity.badRequest().build(), pacienteController.getAll());
+    }
+
+    // Testes de busca usuarios por ID
+    @Test
+    public void metodo_getById_deve_retornar_um_usuario(){
+        when(userDbService.findById(1L)).thenReturn(user);
+        Assertions.assertEquals(ResponseEntity.ok().body(user), pacienteController.getById(1L));
+    }
+
+    @Test
+    public void metodo_getById_deve_retornar_um_usuario_nao_encontrado(){
+        when(userDbService.findById(1L)).thenReturn(null);
+        Assertions.assertEquals(ResponseEntity.status(404).body("Não possui nenhum paciente com esse id cadastrado"), pacienteController.getById(1L));
+    }
+
+    // Teste de atualização de usuarios
+    @Test
+    public void metodo_update_deve_retornar_usuario_atualizado(){
+        when(userDbService.update(1L, cadastro)).thenReturn(user);
         Assertions.assertEquals(ResponseEntity.ok().body(user), pacienteController.update(1L, cadastro));
+    }
+
+    @Test
+    public void metodo_update_deve_retornar_badRequest_quando_paciente_null(){
+        when(userDbService.update(1L, null)).thenReturn(null);
+        Assertions.assertEquals(ResponseEntity.badRequest().build(), pacienteController.update(1L, null));
+    }
+
+    @Test
+    public void metodo_update_deve_retornar_badRequest_quando_id_nul(){
+        when(userDbService.update(null, cadastro)).thenReturn(null);
+        Assertions.assertEquals(ResponseEntity.badRequest().build(), pacienteController.update(null, cadastro));
+    }
+
+    @Test
+    public void metodo_update_deve_retornar_badRequest_quando_ambos_atributos_null(){
+        when(userDbService.update(null, null)).thenReturn(null);
+        Assertions.assertEquals(ResponseEntity.badRequest().build(), pacienteController.update(null, null));
+    }
+
+    // Teste ao deletar usuario
+
+    @Test
+    public void metodo_delete_deve_retornar_um_true(){
+        when(userDbService.deleteById(1L)).thenReturn(true);
+        Assertions.assertEquals(ResponseEntity.ok().body("Usuário deletado com sucesso"), pacienteController.delete(1L));
+    }
+
+    @Test
+    public void metodo_delete_deve_retornar_um_false(){
+        when(userDbService.deleteById(null)).thenReturn(false);
+        Assertions.assertEquals(ResponseEntity.badRequest().body("Houve um error ao deletar o usuário, verifique se o id está " +
+                "correto"), pacienteController.delete(null));
     }
 }
