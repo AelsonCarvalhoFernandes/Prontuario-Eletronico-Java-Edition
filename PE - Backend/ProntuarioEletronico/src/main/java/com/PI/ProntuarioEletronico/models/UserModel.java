@@ -3,6 +3,7 @@ package com.PI.ProntuarioEletronico.models;
 import com.PI.ProntuarioEletronico.resources.enums.Roles;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
@@ -222,7 +223,30 @@ public class UserModel implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        if(this.roles == Roles.administrador){
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_ADMIN"),
+                    new SimpleGrantedAuthority("ROLE_MEDICO"),
+                    new SimpleGrantedAuthority("ROLE_COLABORADOR"),
+                    new SimpleGrantedAuthority("ROLE_USUARIO")
+            );
+        }else if(this.roles == Roles.medico){
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_MEDICO"),
+                    new SimpleGrantedAuthority("ROLE_COLABORADOR"),
+                    new SimpleGrantedAuthority("ROLE_USUARIO")
+            );
+        }else if(this.roles == Roles.colaborador){
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_COLABORADOR"),
+                    new SimpleGrantedAuthority("ROLE_USUARIO")
+            );
+        }else{
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_USUARIO")
+            );
+        }
     }
 
     @Override
