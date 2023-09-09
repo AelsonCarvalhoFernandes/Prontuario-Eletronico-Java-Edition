@@ -68,7 +68,7 @@ public class UserDbService {
         try{
             Optional<UserModel> user = userRepository.findById(id);
 
-            if(user.isPresent() == false){
+            if(!user.isPresent()){
                 return null;
             }
 
