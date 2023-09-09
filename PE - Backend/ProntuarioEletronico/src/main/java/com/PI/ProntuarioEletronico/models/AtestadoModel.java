@@ -1,13 +1,8 @@
 package com.PI.ProntuarioEletronico.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "atestados")
@@ -18,47 +13,42 @@ public class AtestadoModel {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate dataCriacao;
-        
-    @Column(nullable = false)
-    private String nomeMedico;
+    private LocalDateTime dataCriacao;
 
     @Column(nullable = false)
-    private String nomePaciente;
-    
+    private LocalDateTime dataAtualizacao;
+
     @Column(nullable = false)
     private String diagnostico;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel users;
+
+    @ManyToOne
+    @JoinColumn(name = "medico_id")
+    private UserModel medico;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    //public void setId(Long id) {this.id = id;}
 
-    public LocalDate getDataCriacao() {
+    public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) {
+    public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getNomeMedico() {
-        return nomeMedico;
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
     }
 
-    public void setNomeMedico(String nomeMedico) {
-        this.nomeMedico = nomeMedico;
-    }
-
-    public String getNomePaciente() {
-        return nomePaciente;
-    }
-
-    public void setNomePaciente(String nomePaciente) {
-        this.nomePaciente = nomePaciente;
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
     public String getDiagnostico() {
@@ -69,4 +59,19 @@ public class AtestadoModel {
         this.diagnostico = diagnostico;
     }
 
+    public UserModel getUsers() {
+        return users;
+    }
+
+    public void setUsers(UserModel users) {
+        this.users = users;
+    }
+
+    public UserModel getMedico() {
+        return medico;
+    }
+
+    public void setMedico(UserModel medicos) {
+        this.medico = medicos;
+    }
 }
