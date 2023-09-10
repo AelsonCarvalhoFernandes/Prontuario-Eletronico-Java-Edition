@@ -25,8 +25,8 @@ public class AtestadoController {
 
     }
 
-    @GetMapping("id")
-    public ResponseEntity<AtestadoModel> getById(Long id) {
+    @GetMapping("{id}")
+    public ResponseEntity<AtestadoModel> getById(@PathVariable(value = "id") Long id) {
         AtestadoModel atestado = atestadoDbService.findById(id);
 
         if(atestado == null){

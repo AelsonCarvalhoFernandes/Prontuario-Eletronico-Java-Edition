@@ -3,6 +3,7 @@ package com.PI.ProntuarioEletronico.services.dbServices;
 import com.PI.ProntuarioEletronico.models.AtestadoModel;
 import com.PI.ProntuarioEletronico.repositories.AtestadoRepository;
 import com.PI.ProntuarioEletronico.resources.dtos.atestados.AtestadoDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,7 +12,10 @@ import java.util.Optional;
 
 @Service
 public class AtestadoDbService {
+
+    @Autowired
     private UserDbService userDbService;
+    @Autowired
     private AtestadoRepository atestadoRepository;
 
 

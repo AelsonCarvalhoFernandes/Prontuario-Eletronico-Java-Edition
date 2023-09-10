@@ -1,0 +1,26 @@
+.conteiner{
+    margin-top: 20px;
+}
+
+.loginForm{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm div {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginForm div input {
+    font-size: 20px;
+    border: 1px solid ;
+    border-radius: 8px;
+    padding: 6px;
+}
+
