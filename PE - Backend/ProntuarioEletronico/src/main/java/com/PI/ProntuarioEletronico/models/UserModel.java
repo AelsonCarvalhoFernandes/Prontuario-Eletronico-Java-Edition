@@ -44,6 +44,12 @@ public class UserModel implements UserDetails {
     @OneToMany(mappedBy = "medico")
     private List<ReceitaModel> receitasMedico;
 
+    @OneToMany(mappedBy = "users")
+    private List<LaudoModel> laudos;
+
+    @OneToMany(mappedBy = "medico")
+    private List<LaudoModel> laudoMedico;
+
 
     // Getters e Setters dos atributos
 
