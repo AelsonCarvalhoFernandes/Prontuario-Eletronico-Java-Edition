@@ -84,6 +84,4 @@ public class ReceitaModel {
         this.medico = medico;
     }
 
-
-
 }
