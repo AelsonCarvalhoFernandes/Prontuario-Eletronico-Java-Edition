@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-th-each="pacient: ${pacients}">
+        <a th:href="@{'pacient/' + ${pacient.id}}">
+            <p><strong>Nome: </strong> <span data-th-text="${pacient.firstName}"></span> <span data-th-text="${pacient.lastName}"></span></p>
+            <p><strong>CPF: </strong><span data-th-text="${pacient.cpf}"></span> | <strong>RG: </strong> <span data-th-text="${pacient.rg}"></span></p>
+            <small> Data de criação: <small data-th-text="${pacient.createdAt}"></small> | Ultima atualização: <small data-th-text="${pacient.updatedAt}"></small>
+            </small>
+        </a>
+    </div>
+</body>
+</html>
