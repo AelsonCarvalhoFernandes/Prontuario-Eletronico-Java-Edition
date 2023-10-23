@@ -2,12 +2,8 @@ package com.pi.ProntuarioEletronico.models.user.typeUsers;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.pi.ProntuarioEletronico.models.user.UserModel;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -36,6 +32,12 @@ public class DoctorModel {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
     public DoctorModel() {
     }
@@ -105,6 +107,14 @@ public class DoctorModel {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
 }

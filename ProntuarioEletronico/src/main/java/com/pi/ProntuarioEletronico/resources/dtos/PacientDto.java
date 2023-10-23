@@ -11,10 +11,11 @@ public record PacientDto(
     String rg,
     String cpf,
 
+    String cns,
     LocalDate dateBirth,
     String tipoSanguineo,
-    String doencasPrevias,
-    String cns
+    String doencasPrevias
+
 
 ) {
     

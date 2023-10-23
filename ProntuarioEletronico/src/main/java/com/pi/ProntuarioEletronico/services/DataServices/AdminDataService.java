@@ -24,6 +24,8 @@ public class AdminDataService {
 
             user.setRole(Role.Administrator);
 
+            user.setRole(Role.Administrator);
+
             userRepository.save(user);
             
             return user;

@@ -1,6 +1,6 @@
 package com.pi.ProntuarioEletronico.resources.dtos;
 
-public record DoctorDto(
+public record CollaboratorDto(
         String firstName,
         String lastName,
         String email,

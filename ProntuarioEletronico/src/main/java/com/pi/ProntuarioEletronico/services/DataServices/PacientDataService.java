@@ -2,7 +2,7 @@ package com.pi.ProntuarioEletronico.services.DataServices;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
 import com.pi.ProntuarioEletronico.models.user.typeUsers.PacientModel;
+
 import com.pi.ProntuarioEletronico.repositories.UserRepository.IPacientRepository;
-import com.pi.ProntuarioEletronico.repositories.UserRepository.IUserRepository;
+
 import com.pi.ProntuarioEletronico.resources.dtos.PacientDto;
 import com.pi.ProntuarioEletronico.resources.dtos.PacientFullDataDto;
+import com.pi.ProntuarioEletronico.resources.enums.Role;
 
 @Service
 public class PacientDataService {
     
     @Autowired
-    private IUserRepository userRepository;
+    private UserDataService userDataService;
 
     @Autowired
     private IPacientRepository pacientRepository;
@@ -30,7 +32,7 @@ public class PacientDataService {
 
     public List<UserModel> listAll(){
         try{
-            return userRepository.findAll();
+            return userDataService.listAll();
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());
             return null;
@@ -39,23 +41,18 @@ public class PacientDataService {
 
     public UserModel findById(Long id){
         try{
-            Optional<UserModel> user = userRepository.findById(id);
-            return user.get();
+            UserModel user = userDataService.findById(id);
+            return user;
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());
             return null;
         }
     }
 
-    public List<UserModel> findByNameOrCpf(String data){
+    public UserModel findByNameOrCpf(String data){
         try {
-            List<UserModel> users = userRepository.findByCpf(data);
-
-            if(users == null){
-                users = userRepository.findByFirstName(data);
-            }
-
-            return users;
+            UserModel user = userDataService.findByCpf(data);
+            return user;
 
         } catch (Exception ex) {
             System.out.println("Error: "+ ex.getMessage());
@@ -65,11 +62,11 @@ public class PacientDataService {
 
     public PacientFullDataDto pacientFullData(Long id){
         try{
-            Optional<UserModel> user = userRepository.findById(id);
-            if(user.get() != null){
-                PacientModel pacient = pacientRepository.findByUser(user.get());
+            UserModel user = userDataService.findById(id);
+            if(user != null){
+                PacientModel pacient = pacientRepository.findByUser(user);
 
-                PacientFullDataDto data = new PacientFullDataDto(user.get(), pacient);
+                PacientFullDataDto data = new PacientFullDataDto(user, pacient);
                 return data;
             }
 
@@ -91,10 +88,9 @@ public class PacientDataService {
 
             BeanUtils.copyProperties(dto, user);
 
-            user.setCreatedAt(LocalDateTime.now());
-            user.setUpdatedAt(LocalDateTime.now());
+            user.setRole(Role.Pacient);
 
-            userRepository.save(user);
+            user = userDataService.create(user);
 
             PacientModel paciente = new PacientModel();
             paciente.setUser(user);
@@ -120,13 +116,11 @@ public class PacientDataService {
 
     public UserModel update(PacientDto dto, Long Id){
         try{
-            UserModel user = this.findById(Id);
+            UserModel user = userDataService.findById(Id);
 
             BeanUtils.copyProperties(dto, user);
 
-            user.setUpdatedAt(LocalDateTime.now());
-
-            userRepository.save(user);
+            user = userDataService.update(user);
 
             PacientModel pacient = pacientRepository.findByUser(user);
 
@@ -150,9 +144,10 @@ public class PacientDataService {
 
     public boolean delete(Long id){
         try{
-            UserModel user = this.findById(id);
+            UserModel user = userDataService.findById(id);
             if(user != null){
-                userRepository.delete(user);
+                userDataService.delete(id);
+                pacientRepository.delete(pacientRepository.findByUser(user));
                 return true;
             }
 
