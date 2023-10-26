@@ -1,0 +1,123 @@
+label {
+    font-size: 3vw;
+    color: #2984ED;
+    font-weight: bold;
+}
+
+.title {
+    padding: 5%;
+}
+
+.fontLabel label {
+    font-weight: normal;
+    font-size: 1.25vw;
+}
+
+.defaultTextFont,
+textarea,
+input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25vw;
+}
+
+.borderGlobal {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+    border: 1px solid #2984ED;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    margin-bottom: 20px;
+}
+
+.input-groupInline {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+}
+
+input {
+    width: 40%;
+    border: none;
+    border-bottom: 1px solid #2984ED;
+}
+
+textarea {
+
+    margin-top: 2%;
+    width: 100%;
+    height: 300px;
+    resize: none;
+
+    background: #e8e8e8;
+    box-shadow: #b4a3ff 10px 5px 9px;
+    color: rgb(0, 0, 0);
+
+    border: none;
+    border-radius: 5px;
+}
+
+input:focus,
+textarea:focus {
+    border: 1px solid #2984ED;
+    outline: none;
+}
+
+.btnSave {
+    background: linear-gradient(to right, #449bff, #1a008d);
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.5vw;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    height: 3vw;
+}
+
+.btns {
+    margin-left: 87%;
+    width: 20%;
+}
+
+@media (max-width: 768px) {
+    .borderGlobal {
+        padding: 5%;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 10vw;
+    }
+
+    .fontLabel label {
+        font-size: 3vw;
+    }
+
+    input {
+        font-size: 3vw;
+    }
+
+    textarea {
+        font-size: 3vw;
+    }
+
+    .btns {
+        margin-left: 75%;
+        width: 50%;
+    }
+
+    .btnSave {
+        font-size: 5vw;
+        height: 10vw;
+    }
+}

@@ -37,7 +37,7 @@ public class PacientModel {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
-    
+
     public UserModel getUser() {
         return user;
     }
@@ -62,44 +62,36 @@ public class PacientModel {
         this.updatedAt = updatedAt;
     }
 
-
-    
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public LocalDate getDateBirth() {
         return dateBirth;
     }
+
     public void setDateBirth(LocalDate dateBirth) {
         this.dateBirth = dateBirth;
     }
+
     public String getTipoSanguineo() {
         return tipoSanguineo;
     }
+
     public void setTipoSanguineo(String tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
+
     public String getDoencasPrevias() {
         return doencasPrevias;
     }
+
     public void setDoencasPrevias(String doencasPrevias) {
         this.doencasPrevias = doencasPrevias;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getAllergies() {
@@ -108,5 +100,21 @@ public class PacientModel {
 
     public void setAllergies(String allergies) {
         this.allergies = allergies;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

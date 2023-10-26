@@ -1,9 +1,5 @@
 package com.pi.ProntuarioEletronico.controllers;
 
-import com.pi.ProntuarioEletronico.models.user.UserModel;
-import com.pi.ProntuarioEletronico.resources.dtos.DoctorDto;
-import com.pi.ProntuarioEletronico.services.DataServices.DoctorDataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +11,6 @@ import com.pi.ProntuarioEletronico.resources.dtos.PacientDto;
 @Controller
 @RequestMapping("admin")
 public class AdminController {
-
-    @Autowired
-    private DoctorDataService doctorDataService;
     
     /*
      *  Administradores
@@ -42,17 +35,6 @@ public class AdminController {
         ModelAndView mv = new ModelAndView("admin/CreateDoctor");
 
         return mv;
-    }
-
-    @PostMapping("createDoctor")
-    public ModelAndView createDoctor(DoctorDto dto){
-        UserModel user = doctorDataService.create(dto);
-
-        if(user == null){
-           return new ModelAndView("redirect:createDoctor");
-        }
-
-        return new ModelAndView("redirect:index");
     }
 
     /*
