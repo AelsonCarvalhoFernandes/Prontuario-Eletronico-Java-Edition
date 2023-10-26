@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../Static/global.css">
+    <title>Document</title>
+</head>
+
+<body class="defaultTextFont">
+    <label for="" class="title">Receitas</label>
+    <form action="/prescriptions/createMedicalPrescription" method="post">
+        <div class="btns">
+            <input type="submit" value="Salvar" class="btnSave">
+        </div>
+        <div class="borderGlobal fontLabel">
+            <div class="input-group">
+                <label for="">Nome do paciente:</label>
+                <input type="text" name="patientName">
+            </div>
+            <div class="input-group">
+                <label for="">Nome do médico:</label>
+                <input type="text" name="doctorName">
+            </div>
+            <div class="input-groupInline">
+                <label for="">Medicamentos</label>
+                <textarea name="medication" id="medication1" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

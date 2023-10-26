@@ -11,11 +11,9 @@ import com.pi.ProntuarioEletronico.resources.enums.Role;
 @Repository
 public interface IUserRepository extends JpaRepository<UserModel, Long>{
  
-    public UserModel findByCpf(String cpf);
+    public List<UserModel> findByCpf(String cpf);
 
     public List<UserModel> findByFirstName(String firstName);
-
-    public UserModel findByRg(String rg);
 
     public List<UserModel> findByRole(Role role);
 }

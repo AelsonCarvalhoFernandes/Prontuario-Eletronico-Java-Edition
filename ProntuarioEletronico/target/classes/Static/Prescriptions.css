@@ -1,0 +1,27 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.prescriptions {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+    border: 1px solid #2984ED;
+    border-radius: 10px;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30pt;
+    color: #2984ED;
+    font-weight: bold;
+}
+
+.title {
+    padding: 5%;
+}
+
+.fontLabel label {
+    font-weight: normal;
+    font-size: 15pt;
+}

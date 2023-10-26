@@ -1,3 +1,4 @@
+
 package com.pi.ProntuarioEletronico.controllers;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class DoctorController {
 
         return mv;
     }
+    
     /*
      * Cadastro de pacientes
      */
