@@ -2,6 +2,7 @@ package com.pi.ProntuarioEletronico.models.user.typeUsers;
 
 import java.time.LocalDateTime;
 
+import com.pi.ProntuarioEletronico.models.user.UserModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,10 @@ public class CollaboratorModel {
     
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
     
     public CollaboratorModel() {
