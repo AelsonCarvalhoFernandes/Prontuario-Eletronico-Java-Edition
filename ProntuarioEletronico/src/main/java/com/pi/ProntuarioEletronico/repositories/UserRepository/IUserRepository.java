@@ -3,6 +3,7 @@ package com.pi.ProntuarioEletronico.repositories.UserRepository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
@@ -18,4 +19,6 @@ public interface IUserRepository extends JpaRepository<UserModel, Long>{
     public UserModel findByRg(String rg);
 
     public List<UserModel> findByRole(Role role);
+    
+    UserDetails findByEmail(String Email);
 }

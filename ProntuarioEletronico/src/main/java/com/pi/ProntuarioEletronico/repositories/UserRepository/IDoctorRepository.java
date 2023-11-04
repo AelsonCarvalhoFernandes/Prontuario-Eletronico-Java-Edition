@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface IDoctorRepository extends JpaRepository<DoctorModel, Long> {
 
     public DoctorModel findByUser(UserModel user);
+    public DoctorModel findByCrm(String crm);
 }

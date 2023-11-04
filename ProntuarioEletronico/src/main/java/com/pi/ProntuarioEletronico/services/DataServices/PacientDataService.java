@@ -30,9 +30,9 @@ public class PacientDataService {
      *  Metodos de busca dos pacientes
      */
 
-    public List<UserModel> listAll(){
+    public List<PacientModel> listAll(){
         try{
-            return userDataService.listAll();
+            return pacientRepository.findAll();
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());
             return null;
@@ -44,6 +44,29 @@ public class PacientDataService {
             UserModel user = userDataService.findById(id);
             return user;
         }catch(Exception ex){
+            System.out.println("Error: "+ ex.getMessage());
+            return null;
+        }
+    }
+
+    public PacientModel findByUser(UserModel user){
+        try{
+            PacientModel pacient = pacientRepository.findByUser(user);
+            return pacient;
+
+        }catch (Exception ex){
+            System.out.println("Error: "+ ex.getMessage());
+            return null;
+        }
+    }
+
+    public PacientModel findByCns(String cns){
+        try{
+
+            PacientModel pacient = pacientRepository.findByCns(cns);
+            return pacient;
+
+        }catch (Exception ex){
             System.out.println("Error: "+ ex.getMessage());
             return null;
         }
@@ -67,6 +90,8 @@ public class PacientDataService {
                 PacientModel pacient = pacientRepository.findByUser(user);
 
                 PacientFullDataDto data = new PacientFullDataDto(user, pacient);
+
+                //data.setLaudos(laudoDataService.findByPacient(pacient));
                 return data;
             }
 
@@ -81,9 +106,10 @@ public class PacientDataService {
      * metodos para criar um paciente
      */
 
-    public UserModel create(PacientDto dto){
+    public PacientModel create(PacientDto dto){
         
         try{
+            System.out.println("Chegou aqui 2");
             UserModel user = new UserModel();
 
             BeanUtils.copyProperties(dto, user);
@@ -91,6 +117,8 @@ public class PacientDataService {
             user.setRole(Role.Pacient);
 
             user = userDataService.create(user);
+
+            System.out.println(": " + user.getFirstName());
 
             PacientModel paciente = new PacientModel();
             paciente.setUser(user);
@@ -102,7 +130,7 @@ public class PacientDataService {
 
             pacientRepository.save(paciente);
 
-            return user;
+            return paciente;
 
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());

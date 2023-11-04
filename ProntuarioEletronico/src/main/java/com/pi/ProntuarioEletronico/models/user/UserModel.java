@@ -1,5 +1,7 @@
 package com.pi.ProntuarioEletronico.models.user;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -12,10 +14,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public class UserModel {
+public class UserModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +34,18 @@ public class UserModel {
     @NotBlank
     private String lastName;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Column(name = "email")
+    @NotBlank
+    private String email;
+
     @Column(name = "password")
     @NotBlank
     private String password;
@@ -40,9 +57,6 @@ public class UserModel {
     @Column(name = "cpf")
     //@CPF
     private String cpf;
-
-    @Column(name = "cns")
-    private String cns;
 
     private Role role;
     
@@ -94,8 +108,48 @@ public class UserModel {
         this.lastName = lastName;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == Role.Administrator){
+            return List.of(
+              new SimpleGrantedAuthority("ROLE_ADMIN")
+            );
+        }else if(this.role == Role.Doctor){
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }else if(this.role == Role.Collaborator){
+            return List.of(new SimpleGrantedAuthority("ROLE_COLLABORATOR"));
+        }else{
+            return List.of(new SimpleGrantedAuthority("ROLE_PACIENT"));
+        }
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {

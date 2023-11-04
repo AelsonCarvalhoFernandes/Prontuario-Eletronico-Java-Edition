@@ -21,17 +21,7 @@ public class CollaboratorDataService {
     @Autowired
     private UserDataService userDataService;
 
-    public UserModel findById(Long id){
-        try{
-            UserModel user = userDataService.findById(id);
-            return user;
-        }catch(Exception ex){
-            System.out.println("Error: "+ ex.getMessage());
-            return null;
-        }
-    }
-
-    public UserModel create(CollaboratorDto dto){
+    public CollaboratorModel create(CollaboratorDto dto){
         try {
 
             UserModel user = userDataService.findByCpf(dto.cpf());
@@ -51,7 +41,7 @@ public class CollaboratorDataService {
             collaborator.setUpdatedAt(LocalDateTime.now());
             collaboratorRepository.save(collaborator);
 
-            return user;
+            return collaborator;
 
         } catch (Exception ex) {
 
@@ -61,7 +51,7 @@ public class CollaboratorDataService {
         }
     }
 
-    public UserModel update(Long id, CollaboratorDto dto){
+    public CollaboratorModel update(Long id, CollaboratorDto dto){
         try {
             UserModel user = userDataService.findById(id);
             if(user == null){
@@ -76,7 +66,7 @@ public class CollaboratorDataService {
 
             collaboratorRepository.save(collaborator);
 
-            return user;
+            return collaborator;
 
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());

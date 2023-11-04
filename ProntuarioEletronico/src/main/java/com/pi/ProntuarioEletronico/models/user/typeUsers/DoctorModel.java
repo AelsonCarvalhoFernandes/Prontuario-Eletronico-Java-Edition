@@ -13,6 +13,9 @@ public class DoctorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "crm")
+    @NotBlank
+    private String crm;
 
     @Column(name = "formacao")
     @NotBlank
@@ -43,8 +46,9 @@ public class DoctorModel {
     }
 
     public DoctorModel(Long id, @NotBlank String formacao, @NotBlank String cargo, @NotBlank String diasAtendimento,
-            @NotBlank String horasAtendimento, LocalDateTime createdAt, LocalDateTime updatedAt) {
+            @NotBlank String horasAtendimento, String crm ,LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
+        this.crm = crm;
         this.formacao = formacao;
         this.cargo = cargo;
         this.diasAtendimento = diasAtendimento;
@@ -115,6 +119,14 @@ public class DoctorModel {
 
     public void setUser(UserModel user) {
         this.user = user;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
     }
 
 }

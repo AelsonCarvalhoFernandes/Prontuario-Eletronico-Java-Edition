@@ -10,4 +10,5 @@ import com.pi.ProntuarioEletronico.models.user.typeUsers.PacientModel;
 public interface IPacientRepository extends JpaRepository<PacientModel, Long>{
     
     public PacientModel findByUser(UserModel user);
+    public PacientModel findByCns(String cns);
 }

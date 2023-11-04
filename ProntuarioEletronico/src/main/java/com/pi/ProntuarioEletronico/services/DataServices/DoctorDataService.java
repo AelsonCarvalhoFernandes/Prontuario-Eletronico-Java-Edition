@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class DoctorDataService {
@@ -26,8 +25,9 @@ public class DoctorDataService {
     @Autowired
     private UserDataService userDataService;
 
-    public UserModel create(DoctorDto dto){
+    public DoctorModel create(DoctorDto dto){
         try{
+        System.out.println("Chegou aqui!!");
             UserModel user = new UserModel();
             user.setRole(Role.Doctor);
             BeanUtils.copyProperties(dto, user);
@@ -42,7 +42,7 @@ public class DoctorDataService {
             doctor.setUser(user);
             doctorRepository.save(doctor);
 
-            return user;
+            return doctor;
 
         }catch (Exception ex){
             System.out.println("Error: " + ex.getMessage());
@@ -50,14 +50,16 @@ public class DoctorDataService {
         }
     }
 
-    public UserModel findbyId(Long id){
+    public DoctorModel findbyId(Long id){
         try{
             UserModel user = userDataService.findById(id);
             if(user == null){
                 return null;
             }
 
-            return user;
+            DoctorModel doctor = doctorRepository.findByUser(user);
+
+            return doctor;
 
         }catch (Exception ex){
             System.out.println("Error: " + ex.getMessage());
@@ -65,9 +67,32 @@ public class DoctorDataService {
         }
     }
 
-    public UserModel update(DoctorDto dto, Long id){
+    public DoctorModel findByUser(UserModel user){
         try{
-            UserModel user = findbyId(id);
+            DoctorModel doctor = doctorRepository.findByUser(user);
+            return doctor;
+
+        }catch (Exception ex){
+            System.out.println("Error: " + ex.getMessage());
+            return null;
+            
+        }
+    }
+
+    public DoctorModel findByCrm(String crm){
+        try{
+            DoctorModel doctor = doctorRepository.findByCrm(crm);
+            return doctor;
+
+        }catch (Exception ex){
+            System.out.println("Error: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public DoctorModel update(DoctorDto dto, Long id){
+        try{
+            UserModel user = userDataService.findById(id);
             BeanUtils.copyProperties(dto, user);
 
             userRepository.save(user);
@@ -78,7 +103,7 @@ public class DoctorDataService {
 
             doctorRepository.save(doctor);
 
-            return user;
+            return doctor;
 
         }catch (Exception ex){
             System.out.println("Error: " + ex.getMessage());

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +7,46 @@
 </head>
 <body>
     <div>
+
         <div id="userConteiner">
             <p><strong>Nome:</strong> <span data-th-text="${user.firstName}"></span> <span data-th-text="${user.lastName}"></span></p>
             <p><strong>RG: </strong> <span data-th-text="${user.rg}"></span></p>
             <p><strong>CPF: </strong> <span data-th-text="${user.cpf}"></span></p>
-            <p><strong>CNS: </strong> <span data-th-text="${user.cns}"></span></p>
-
         </div>
 
         <div id="pacienteConteiner">
+            <p><strong>CNS: </strong> <span data-th-text="${pacient.cns}"></span></p>
             <p><strong>Data de nascimento: </strong> <span data-th-text="${pacient.dateBirth}"></span></p>
             <p><strong>Tipo sanguineo: </strong> <span data-th-text="${pacient.tipoSanguineo}"></span></p>
             <p><strong>Doenças previa:</strong> <span data-th-text="${pacient.doencasPrevias}"></span></p>
             <p><strong>Alergias: </strong> <span data-th-text="${pacient.allergies}"></span></p>
+        </div>
+
+        <div id="contactConteiner">
+
+        </div>
+
+        <div id="pacienteLaudos">
+            <h2>Laudos: </h2>
+            <a th:href="@{'/doctorProntuario/createLaudo/' + ${pacient.id}}">Criar novo laudo</a>
+            <div id="laudosConteiner">
+
+            </div>
+
+        </div>
+
+        <div id="pacientReceitas">
+            <h2>Receitas: </h2>
+            <div id="receitasConteiner">
+
+            </div>
+        </div>
+
+        <div id="pacientAtestados">
+            <h2>Atestados: </h2>
+            <div id="atestadosConteiner">
+
+            </div>
         </div>
 
     </div>

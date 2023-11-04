@@ -1,0 +1,53 @@
+<div>
+    <form action="@{'create/' + ${account.id}}" method="post">
+        <div>
+            <div>
+                <label for="">Nome:</label>
+                <input type="text" name="firstName" th:value="${account.firstName}">
+            </div>
+            <div>
+                <label for="">Sobrenome:</label>
+                <input type="text" name="lastName" th:value="${account.lastName}">
+            </div>
+            <div>
+                <label for="">E-mail:</label>
+                <input type="text" name="email" th:value="${account.email}">
+            </div>
+            <div>
+                <label for="">RG:</label>
+                <input type="text" name="rg" th:value="${account.rg}">
+            </div>
+            <div>
+                <label for="">CPF:</label>
+                <input type="text" name="cpf" th:value="${account.cpf}">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="">CRM</label>
+                <input type="text" name="crm" th:value="${data.crm}">
+            </div>
+            <div>
+                <label for="">Formação</label>
+                <input type="text" name="formacao" th:value="${data.formacao}">
+            </div>
+            <div>
+                <label for="">Cargo</label>
+                <input type="text" name="cargo" th:value="${data.cargo}">
+            </div>
+            <div>
+                <label for="">Dias de atendimento</label>
+                <input type="text" name="diasAtendimento" th:value="${data.diasAtendimento}">
+            </div>
+            <div>
+                <label for="">Horas de atendimento</label>
+                <input type="text" name="horasAtendimento" th:value="${data.horasAtendimento}">
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Salvar">
+        </div>
+    </form>
+</div>

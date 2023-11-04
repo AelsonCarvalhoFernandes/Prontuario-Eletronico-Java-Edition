@@ -34,6 +34,9 @@ public class PacientModel {
     @Column(name = "alergias")
     private String allergies;
 
+    @Column(name = "cns")
+    private String cns;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
@@ -54,10 +57,11 @@ public class PacientModel {
     }
 
     public PacientModel(LocalDate dateBirth, String tipoSanguineo, String doencasPrevias, LocalDateTime createdAt,
-            LocalDateTime updatedAt) {
+            LocalDateTime updatedAt, String cns) {
         this.dateBirth = dateBirth;
         this.tipoSanguineo = tipoSanguineo;
         this.doencasPrevias = doencasPrevias;
+        this.cns = cns;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -89,6 +93,13 @@ public class PacientModel {
         this.doencasPrevias = doencasPrevias;
     }
 
+    public String getCns() {
+        return cns;
+    }
+
+    public void setCns(String cns) {
+        this.cns = cns;
+    }
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

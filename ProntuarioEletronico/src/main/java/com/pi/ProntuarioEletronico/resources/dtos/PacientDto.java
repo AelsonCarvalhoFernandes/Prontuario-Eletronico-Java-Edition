@@ -10,7 +10,6 @@ public record PacientDto(
     String password,
     String rg,
     String cpf,
-
     String cns,
     LocalDate dateBirth,
     String tipoSanguineo,

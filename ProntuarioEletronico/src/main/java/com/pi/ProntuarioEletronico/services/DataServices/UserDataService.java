@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
 import com.pi.ProntuarioEletronico.repositories.UserRepository.IUserRepository;
+import com.pi.ProntuarioEletronico.resources.enums.Role;
 
 @Service
 public class UserDataService {
@@ -46,6 +47,17 @@ public class UserDataService {
 
         } catch (Exception ex) {
             System.out.println("Error: "+ ex.getMessage());
+            return null;
+        }
+    }
+
+    public List<UserModel> findByRole(Role role){
+        try {
+
+            return userRepository.findByRole(role);
+            
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }

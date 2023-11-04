@@ -1,6 +1,6 @@
 package com.pi.ProntuarioEletronico.controllers;
 
-import com.pi.ProntuarioEletronico.models.user.UserModel;
+import com.pi.ProntuarioEletronico.models.user.typeUsers.DoctorModel;
 import com.pi.ProntuarioEletronico.resources.dtos.DoctorDto;
 import com.pi.ProntuarioEletronico.services.DataServices.DoctorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +44,12 @@ public class AdminController {
         return mv;
     }
 
-    @PostMapping("createDoctor")
+    @PostMapping("createDoctor/save")
     public ModelAndView createDoctor(DoctorDto dto){
-        UserModel user = doctorDataService.create(dto);
+        System.out.println("chegou aqui");
+        DoctorModel doctor = doctorDataService.create(dto);
 
-        if(user == null){
+        if(doctor == null){
            return new ModelAndView("redirect:createDoctor");
         }
 

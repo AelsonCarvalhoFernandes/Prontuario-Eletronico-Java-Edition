@@ -7,7 +7,7 @@ public record DoctorDto(
         String password,
         String rg,
         String cpf,
-        String cns,
+        String crm,
         String formacao,
         String cargo,
         String diasAtendimento,
