@@ -1,9 +1,9 @@
 package com.pi.ProntuarioEletronico.services.DataServices;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
+import com.pi.ProntuarioEletronico.models.user.contactUsers.ContactModel;
 import com.pi.ProntuarioEletronico.models.user.typeUsers.DoctorModel;
 import com.pi.ProntuarioEletronico.repositories.UserRepository.IDoctorRepository;
-import com.pi.ProntuarioEletronico.repositories.UserRepository.IUserRepository;
 import com.pi.ProntuarioEletronico.resources.dtos.DoctorDto;
 import com.pi.ProntuarioEletronico.resources.enums.Role;
 
@@ -20,10 +20,10 @@ public class DoctorDataService {
     private IDoctorRepository doctorRepository;
 
     @Autowired
-    private IUserRepository userRepository;
+    private UserDataService userDataService;
 
     @Autowired
-    private UserDataService userDataService;
+    private ContactDataService contactDataService;
 
     public DoctorModel create(DoctorDto dto){
         try{
@@ -41,6 +41,12 @@ public class DoctorDataService {
 
             doctor.setUser(user);
             doctorRepository.save(doctor);
+
+            ContactModel contact = new ContactModel();
+            BeanUtils.copyProperties(dto, contact);
+            contact.setUser(user);
+
+            contactDataService.create(contact);
 
             return doctor;
 
@@ -95,13 +101,19 @@ public class DoctorDataService {
             UserModel user = userDataService.findById(id);
             BeanUtils.copyProperties(dto, user);
 
-            userRepository.save(user);
+            userDataService.create(user);
 
             DoctorModel doctor = doctorRepository.findByUser(user);
             BeanUtils.copyProperties(dto, doctor);
             doctor.setUpdatedAt(LocalDateTime.now());
 
             doctorRepository.save(doctor);
+
+            ContactModel contact = new ContactModel();
+            BeanUtils.copyProperties(dto, contact);
+            contact.setUser(user);
+
+            contactDataService.create(contact);
 
             return doctor;
 

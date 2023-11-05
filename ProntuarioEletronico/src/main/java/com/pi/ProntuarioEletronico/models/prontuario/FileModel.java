@@ -1,6 +1,5 @@
 package com.pi.ProntuarioEletronico.models.prontuario;
 
-import com.pi.ProntuarioEletronico.models.user.typeUsers.PacientModel;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -43,5 +42,29 @@ public class FileModel {
 
     public void setLaudo(LaudoModel laudo) {
         this.laudo = laudo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

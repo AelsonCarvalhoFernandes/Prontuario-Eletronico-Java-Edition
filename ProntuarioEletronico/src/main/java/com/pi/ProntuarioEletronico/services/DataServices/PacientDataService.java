@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
+import com.pi.ProntuarioEletronico.models.user.contactUsers.ContactModel;
 import com.pi.ProntuarioEletronico.models.user.typeUsers.PacientModel;
 
 import com.pi.ProntuarioEletronico.repositories.UserRepository.IPacientRepository;
@@ -25,6 +26,9 @@ public class PacientDataService {
 
     @Autowired
     private IPacientRepository pacientRepository;
+
+    @Autowired
+    private ContactDataService contactDataService;
 
     /*
      *  Metodos de busca dos pacientes
@@ -118,8 +122,6 @@ public class PacientDataService {
 
             user = userDataService.create(user);
 
-            System.out.println(": " + user.getFirstName());
-
             PacientModel paciente = new PacientModel();
             paciente.setUser(user);
 
@@ -129,6 +131,12 @@ public class PacientDataService {
             paciente.setUpdatedAt(LocalDateTime.now());
 
             pacientRepository.save(paciente);
+
+            ContactModel contact = new ContactModel();
+            BeanUtils.copyProperties(dto, contact);
+            contact.setUser(user);
+
+            contactDataService.create(contact);
 
             return paciente;
 
@@ -142,7 +150,7 @@ public class PacientDataService {
      * metodo para atualizar o paciente
      */
 
-    public UserModel update(PacientDto dto, Long Id){
+    public PacientModel update(PacientDto dto, Long Id){
         try{
             UserModel user = userDataService.findById(Id);
 
@@ -158,7 +166,13 @@ public class PacientDataService {
 
             pacientRepository.save(pacient);
 
-            return user;
+            ContactModel contact = new ContactModel();
+            BeanUtils.copyProperties(dto, contact);
+            contact.setUser(user);
+
+            contactDataService.create(contact);
+
+            return pacient;
             
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());
@@ -173,13 +187,17 @@ public class PacientDataService {
     public boolean delete(Long id){
         try{
             UserModel user = userDataService.findById(id);
-            if(user != null){
-                userDataService.delete(id);
-                pacientRepository.delete(pacientRepository.findByUser(user));
-                return true;
+
+            if(user == null){
+                return false;
             }
 
-            return false;
+            PacientModel pacient = this.findByUser(user);
+            pacientRepository.delete(pacient);  
+            userDataService.delete(id);
+
+            return true;
+            
 
         }catch(Exception ex){
             System.out.println("Error: "+ ex.getMessage());

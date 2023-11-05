@@ -1,0 +1,57 @@
+<div>
+    <form action="@{'update/' + ${account.id}}" method="post">
+        <div>
+            <div>
+                <input type="hidden" name="id" th:value="${account.id}">
+            </div>
+            <div>
+                <label for="firstName">Nome:</label>
+                <input id="firstName" type="text" name="firstName" th:value="${account.firstName}">
+            </div>
+            <div>
+                <label for="lastName">Sobrenome:</label>
+                <input id="lastName" type="text" name="lastName" th:value="${account.lastName}">
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input id="email" type="text" name="email" th:value="${account.email}">
+            </div>
+            <div>
+                <label for="rg">RG:</label>
+                <input id="rg" type="text" name="rg" th:value="${account.rg}">
+            </div>
+            <div>
+                <label for="cpf">CPF:</label>
+                <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="">CNS</label>
+                <input type="text" name="cns" th:value="${data.cns}">
+            </div>
+            <div>
+                <label for="">Tipo Sanguineo</label>
+                <input type="text" name="tipoSanguineo" th:value="${data.tipoSanguineo}">
+            </div>
+            <div>
+                <label for="">Doenças previas</label>
+                <input type="text" name="doencasPrevias" th:value="${data.doencasPrevias}">
+            </div>
+            <div>
+                <label for="">Data de Nascimento</label>
+                <input type="Date" name="dateBirth" th:value="${data.dateBirth}">
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Salvar">
+        </div>
+    </form>
+</div>
+
+<div>
+    <form th:action="@{'/pacient/delete/' + ${account.id}}" method="post">
+        <input type="submit" value="Deletar">
+    </form>
+</div>

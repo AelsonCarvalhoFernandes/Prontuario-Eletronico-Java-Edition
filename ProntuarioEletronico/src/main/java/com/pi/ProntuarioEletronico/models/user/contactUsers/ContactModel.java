@@ -2,10 +2,14 @@ package com.pi.ProntuarioEletronico.models.user.contactUsers;
 
 import java.time.LocalDateTime;
 
+import com.pi.ProntuarioEletronico.models.user.UserModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 
 public class ContactModel {
@@ -37,6 +41,11 @@ public class ContactModel {
     @Column(name = "cellphone")
     @NotBlank
     private String cellPhone;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
+
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -146,5 +155,13 @@ public class ContactModel {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 }

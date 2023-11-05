@@ -22,29 +22,34 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
-@RequestMapping("doctorProntuario")
-public class DoctorProtuarioController {
+@RequestMapping("prontuario")
+public class ProtuarioController {
 
     private final Path fileLocation;
 
-    public DoctorProtuarioController(FileStorageProperties fileStorage){
+    public ProtuarioController(FileStorageProperties fileStorage){
         this.fileLocation = Paths.get(fileStorage.getUploadDir()).toAbsolutePath().normalize();
     }
 
     @Autowired
     private LaudoDataService laudoDataService;
 
-    @GetMapping("createLaudo")
+    @GetMapping("create")
     public ModelAndView createLaudo(){
         ModelAndView mv = new ModelAndView("prontuario/CreateLaudo");
+        
         return mv;
     }
 
-    @PostMapping("createLaudo/saveLaudo")
+    @PostMapping("create")
     public ModelAndView saveLaudo(LaudoDto dto){
-        System.out.println("Chegou aqui");
-
         LaudoModel laudo = laudoDataService.create(dto);
+
+        if(laudo == null){
+            ModelAndView mv = new ModelAndView("error/Error");
+            mv.addObject("Message", "Houve um erro ao criar o laudo");
+            return mv;
+        }
 
         return new ModelAndView("redirect:createLaudo");
     }
