@@ -1,0 +1,22 @@
+<div>
+
+    <div id="userConteiner">
+        <p><strong>Nome:</strong> <span data-th-text="${account.firstName}"></span> <span data-th-text="${account.lastName}"></span></p>
+        <p><strong>E-mail:</strong><span data-th-text="${account.email}"></span>/p>
+        <p><strong>RG: </strong> <span data-th-text="${account.rg}"></span></p>
+        <p><strong>CPF: </strong> <span data-th-text="${account.cpf}"></span></p>
+    </div>
+
+    <div id="pacienteConteiner">
+        <p><strong>CRM: </strong> <span data-th-text="${data.cns}"></span></p>
+        <p><strong>Formação: </strong> <span data-th-text="${data.dateBirth}"></span></p>
+        <p><strong>Cargo: </strong> <span data-th-text="${data.tipoSanguineo}"></span></p>
+        <p><strong>Dias de atendimento:</strong> <span data-th-text="${data.doencasPrevias}"></span></p>
+        <p><strong>Horas de atendimento: </strong> <span data-th-text="${data.allergies}"></span></p>
+    </div>
+
+    <div id="contactConteiner">
+
+    </div>
+
+</div>

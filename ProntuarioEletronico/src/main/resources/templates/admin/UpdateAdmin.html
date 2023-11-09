@@ -1,0 +1,27 @@
+<form action="">
+    <div>
+        <div>
+            <input type="hidden" name="id" th:value="${account.id}">
+        </div>
+        <div>
+            <label for="firstName">Nome:</label>
+            <input id="firstName" type="text" name="firstName" th:value="${account.firstName}">
+        </div>
+        <div>
+            <label for="lastName">Sobrenome:</label>
+            <input id="lastName" type="text" name="lastName" th:value="${account.lastName}">
+        </div>
+        <div>
+            <label for="email">E-mail:</label>
+            <input id="email" type="text" name="email" th:value="${account.email}">
+        </div>
+        <div>
+            <label for="rg">RG:</label>
+            <input id="rg" type="text" name="rg" th:value="${account.rg}">
+        </div>
+        <div>
+            <label for="cpf">CPF:</label>
+            <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
+        </div>
+    </div>
+</form>
