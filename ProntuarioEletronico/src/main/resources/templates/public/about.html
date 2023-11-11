@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/about.css">
+  <link rel="stylesheet" href="../../static/homePage.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <title>Premaap</title>
+
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
+    </div>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a th:href="@{/index}" class="nav-link">Home</a></li>
+        <li><a th:href="@{/about}" class="nav-link">Quem Somos</a></li>
+        <li><a th:href="@{/login}" class="nav-link">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="quem-somos">
+      <div class="banner-quemSomos">
+        <img src="../../static/assets/About_img/Banner.png" alt="banner">
+        <h1>"Focamos em <br>Agilidade <br>e Segurança"</h1>
+      </div>
+
+
+      <div class="resumo">
+        <div class="text">
+          <h2>Quem somos</h2>
+          <p>
+            O Premaap - Prontuário Eletrônico Médico de Apoio ao Paciente é uma aplicação direcionada a hospitais e clínicas de saúde de pequeno e médio porte, que tem como objetivo oferecer uma solução segura, ágil e eficiente para o cadastro de pacientes e consultas médicas. A crescente adoção de prontuários eletrônicos no mercado de saúde se deve, em grande parte, à segurança e facilidade que essas ferramentas digitais proporcionam, além de ter sido decretado por lei (Lei nº 13.787/2018).<br>
+
+            Com uma interface intuitiva e simples, o PEP em questão oferece aos profissionais da saúde uma ferramenta eficaz para otimizar seus atendimentos e facilitar a navegação pelas páginas da aplicação. O sistema possibilita a realização de procedimentos básicos, como adicionar novos pacientes, consultar pacientes existentes, analisar seus históricos e realizar novas consultas, sempre com a máxima segurança e acessibilidade.<br>
+
+            Uma das novidades do Premaap é a possibilidade de os pacientes visualizarem seus próprios prontuários, quando e onde desejarem, através da aplicação web. Essa funcionalidade permite maior autonomia e participação do paciente em seu próprio tratamento, garantindo uma relação mais transparente entre médico e paciente. É importante ressaltar que apenas as informações autorizadas pelo médico serão disponibilizadas para o paciente, garantindo a privacidade e a confidencialidade dos dados médicos.
+          </p>
+        </div>
+        <img src="../../static/assets/About_img/ImgRoom.png" alt="Imagem consultório">
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="tituloImagem">
+            <h2>Missão</h2>
+            <img class="img1" src="../../static/assets/About_img/ImgMissão.png" alt="Imagem de engrenagem">
+          </div>
+          <p>Nossa missão é oferecer uma solução completa e segura de prontuário eletrônico, simplificando o trabalho dos profissionais de saúde e melhorando o atendimento aos pacientes.</p>
+        </div>
+        <div class="card">
+          <div class="tituloImagem">
+            <h2>Visão</h2>
+            <img class="img1" src="../../static/assets/About_img/ImgVisão.png" alt="Imagem de olho">
+          </div>
+          <p>Nossa visão é ser a principal escolha de hospitais e clínicas em busca de um Prontuário Eletrônico confiável, promovendo o avanço da medicina e da relação médico-paciente.</p>
+        </div>
+        <div class="card">
+          <div class="tituloImagem">
+            <h2>Valores</h2>
+            <img class="img1" src="../../static/assets/About_img/ImgValores.png" alt="Imagem valores">
+          </div>
+          <p>Nossos valores incluem a integridade, segurança, inovação e excelência no atendimento, garantindo a satisfação de nossos clientes e o bem-estar dos pacientes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-que-falam-sobre-nos">
+      <h2>O que Falam Sobre Nós</h2>
+      <div class="depoimentos">
+        <div class="depoimento">
+          <img src="../../static/assets/About_img/perfil1.png" alt="Nome do Perfil 1">
+          <p>"Excelente aplicação para gestão de prontuários médicos. Além de ter uma boa segurança."</p>
+          <b class="name">Manuela Guimarães</b>
+        </div>
+        <div class="depoimento">
+          <img src="../../static/assets/About_img/perfil2.png" alt="Nome do Perfil 2">
+          <p>"O Premaap tornou a interação com meus pacientes mais transparente e eficaz."</p>
+          <b class="name">Alice Agatha</b>
+        </div>
+        <div class="depoimento">
+          <img src="../../static/assets/About_img/perfil3.png" alt="Nome do Perfil 3">
+          <p>"A possibilidade de os pacientes acessarem seus prontuários é um grande avanço. O Premaap é uma ferramenta essencial."</p>
+          <b class="name">Danaiel silva</b>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    <span>
+      © Copyright – Todos os Direitos Reservados – Premaap - 2023
+    </span>
+    <div class="social-icons">
+      <img src="../../static/assets/icons/instagram.png" alt="logotipo do Instagram">
+      <img src="../../static/assets/icons/facebook.png" alt="logotipo do Facebook">
+      <img src="../../static/assets/icons/linkedin.png" alt="logotipo do LinkedIn">
+    </div>
+  </div>
+  <script src="../../static/scripts/hamburguer_nav.js"></script>
+</body>
+
+</html>
