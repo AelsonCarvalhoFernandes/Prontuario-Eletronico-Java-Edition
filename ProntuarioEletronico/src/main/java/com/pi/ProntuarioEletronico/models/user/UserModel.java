@@ -1,4 +1,5 @@
 package com.pi.ProntuarioEletronico.models.user;
+
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -13,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -44,6 +46,7 @@ public class UserModel implements UserDetails {
 
     @Column(name = "email")
     @NotBlank
+    @Email
     private String email;
 
     @Column(name = "password")
@@ -55,20 +58,20 @@ public class UserModel implements UserDetails {
     private String rg;
 
     @Column(name = "cpf")
-    //@CPF
+    // @CPF
     private String cpf;
 
     private Role role;
-    
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     /*
-     *  Construtores
+     * Construtores
      */
 
     public UserModel() {
-        
+
     }
 
     public UserModel(@NotBlank String firstName, @NotBlank String lastName, @NotBlank String password,
@@ -81,7 +84,7 @@ public class UserModel implements UserDetails {
     }
 
     /*
-     *  Metodos getters e Setters
+     * Metodos getters e Setters
      */
 
     public Long getId() {
@@ -110,15 +113,14 @@ public class UserModel implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == Role.Administrator){
+        if (this.role == Role.Administrator) {
             return List.of(
-              new SimpleGrantedAuthority("ROLE_ADMIN")
-            );
-        }else if(this.role == Role.Doctor){
+                    new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else if (this.role == Role.Doctor) {
             return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }else if(this.role == Role.Collaborator){
+        } else if (this.role == Role.Collaborator) {
             return List.of(new SimpleGrantedAuthority("ROLE_COLLABORATOR"));
-        }else{
+        } else {
             return List.of(new SimpleGrantedAuthority("ROLE_PACIENT"));
         }
     }

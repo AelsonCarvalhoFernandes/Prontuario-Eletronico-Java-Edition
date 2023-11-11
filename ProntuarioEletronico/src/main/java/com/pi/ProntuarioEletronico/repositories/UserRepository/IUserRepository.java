@@ -10,8 +10,8 @@ import com.pi.ProntuarioEletronico.models.user.UserModel;
 import com.pi.ProntuarioEletronico.resources.enums.Role;
 
 @Repository
-public interface IUserRepository extends JpaRepository<UserModel, Long>{
- 
+public interface IUserRepository extends JpaRepository<UserModel, Long> {
+
     public UserModel findByCpf(String cpf);
 
     public List<UserModel> findByFirstName(String firstName);
@@ -19,6 +19,7 @@ public interface IUserRepository extends JpaRepository<UserModel, Long>{
     public UserModel findByRg(String rg);
 
     public List<UserModel> findByRole(Role role);
-    
-    UserDetails findByEmail(String Email);
+
+    // UserDetails findByEmail(String Email);
+    UserModel findByEmail(String email);
 }
