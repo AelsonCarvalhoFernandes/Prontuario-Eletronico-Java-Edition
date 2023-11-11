@@ -9,7 +9,7 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 ### Integrantes do projeto:
 
 - Aelson Carvalho Fernandes (Backend)
-- Kaike Marcelo ( Frontend e Backend )
+- Kaike Marcelo Silva ( Frontend e Backend )
 - Vitor Loureiro (Testes da aplicação)
 - Edmilson Almeida (Frontend)
 
