@@ -1,4 +1,4 @@
-# Prontuario Eletronico de Apoio ao Paciente
+# PreMaaP - Prontuario Eletronico Médico de Apoio do atendimento ao Paciente
 
 ### Descrição:
 
@@ -9,21 +9,22 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 ### Integrantes do projeto:
 
 - Aelson Carvalho Fernandes (Backend)
-- Kaike Marcelo ( App Desktop )
-- Vitor Loureiro ( Testes da API)
+- Kaike Marcelo ( Frontend e Backend )
+- Vitor Loureiro (Testes da aplicação)
+- Edmilson Almeida (Frontend)
 
 
 ### Requisitos:
 
 - OpenJDK 17
 - MySql
-- NodeJS 18 (Site)
+~~- NodeJS 18 (Site)~~
 
 ### Features:
 
 - [x] Cadastro de usuários
-- [ ] Cadastro de receitas
-- [ ] Cadastro de Atestados
-- [ ] Cadastro de Laudos
-- [ ] Aplicação desktop
-- [ ] Site para os pacientes
+- [X] Cadastro de receitas
+- [X] Cadastro de Atestados
+- [X] Cadastro de Laudos
+~~- [-] Aplicação desktop~~
+- [X] Site para os pacientes
