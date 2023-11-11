@@ -1,0 +1,83 @@
+<div>
+    <form action="@{'create/' + ${account.id}}" method="post">
+        <div>
+            <div>
+                <input type="hidden" name="id" th:value="${account.id}">
+            </div>
+            <div>
+                <label for="firstName">Nome:</label>
+                <input id="firstName" type="text" name="firstName" th:value="${account.firstName}">
+            </div>
+            <div>
+                <label for="lastName">Sobrenome:</label>
+                <input id="lastName" type="text" name="lastName" th:value="${account.lastName}">
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input id="email" type="text" name="email" th:value="${account.email}">
+            </div>
+            <div>
+                <label for="rg">RG:</label>
+                <input id="rg" type="text" name="rg" th:value="${account.rg}">
+            </div>
+            <div>
+                <label for="cpf">CPF:</label>
+                <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="crm">CRM</label>
+                <input id="crm" type="text" name="crm" th:value="${data.crm}">
+            </div>
+            <div>
+                <label for="formacao">Formação</label>
+                <input id="formacao" type="text" name="formacao" th:value="${data.formacao}">
+            </div>
+            <div>
+                <label for="cargo">Cargo</label>
+                <input id="cargo" type="text" name="cargo" th:value="${data.cargo}">
+            </div>
+            <div>
+                <label for="diasAtendimento">Dias de atendimento</label>
+                <input id="diasAtendimento" type="text" name="diasAtendimento" th:value="${data.diasAtendimento}">
+            </div>
+            <div>
+                <label for="horasAtendimento">Horas de atendimento</label>
+                <input id="horasAtendimento" type="text" name="horasAtendimento" th:value="${data.horasAtendimento}">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="street">Rua</label>
+                <input id="street" type="text" name="street" th:value="${contact.street}">
+            </div>
+            <div>
+                <label for="number">Numero</label>
+                <input id="number" type="text" name="number" th:value="${contact.number}">
+            </div>
+            <div>
+                <label for="neighborhood">Bairro</label>
+                <input id="neighborhood" type="text" name="neighborhood" th:value="${contact.neighborhood}">
+            </div>
+            <div>
+                <label for="city">Cidade</label>
+                <input id="city" type="text" name="city" th:value="${contact.city}">
+            </div>
+            <div>
+                <label for="cellphone">Celular</label>
+                <input id="cellphone" type="text" name="cellphone" th:value="${contact.cellphone}">
+            </div>
+            <div>
+                <label for="telephone">Telefone</label>
+                <input id="telephone" type="text" name="telephone" th:value="${contact.telephone}">
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Salvar">
+        </div>
+    </form>
+</div>

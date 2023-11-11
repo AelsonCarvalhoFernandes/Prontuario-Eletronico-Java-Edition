@@ -1,0 +1,160 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.maxWidth {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+/* Div do título */
+.classTitle {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+
+.title,
+div.btnBack a .material-symbols-outlined {
+    font-size: 2.3vw;
+    color: #004ba0;
+    text-shadow: 2px 3px 3vw rgba(0, 41, 129, 0.3);
+}
+
+.title {
+    font-family: 'Roboto', sans-serif;
+}
+
+div.btnBack a .material-symbols-outlined {
+    text-decoration: none;
+}
+
+div.btnBack a .material-symbols-outlined:hover {
+    color: rgb(0, 195, 255);
+    cursor: pointer;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    padding-top: 5vw;
+    padding-bottom: 2vw;
+}
+
+input[id=textSearch] {
+    width: 100%;
+    margin-top: 1vw;
+    padding-bottom: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3vw;
+    color: #002a5a;
+    border: none;
+    border-bottom: 0.1vw solid rgb(85, 153, 255);
+
+}
+
+input[id=textSearch]:focus {
+    outline: none;
+}
+
+button,
+.btnAdd {
+    padding: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border: 0.2vw solid rgb(85, 153, 255);
+    border-radius: 0.5vw;
+    background: rgb(85, 153, 255);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+button.btnSearch {
+    font-size: 2vw;
+    border-bottom-left-radius: 0;
+}
+
+.btnAdd {
+    font-size: 1.1vw;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    border-bottom-right-radius: 0;
+    margin-left: 5vw;
+}
+
+button:hover,
+.btnAdd:hover {
+    cursor: pointer;
+    background: transparent;
+    color: rgb(85, 153, 255);
+}
+
+table {
+    width: 100%;
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1vw;
+    border-collapse: collapse;
+    border-spacing: 0 8px;
+}
+
+tr {
+    justify-content: center;
+}
+
+th {
+    border-bottom: 1px solid #004ba0;
+    color: #004ba0;
+    font-weight: bold;
+    padding: 0.5vw;
+    text-align: left;
+}
+
+.btnAcess {
+    max-width: 40px;
+    min-width: 40px;
+}
+
+tr td a {
+    color: #004ba0;
+    text-decoration: none;
+}
+
+.btnAcess a {
+    display: flex;
+    align-items: center;
+}
+
+tr.rowSelect:hover {
+    background: rgb(85, 153, 255);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+tr td a:hover {
+    color: white;
+}
+
+
+.globalBorder {
+    padding: 1vw;
+    border: 1px solid rgb(85, 153, 255);
+    border-radius: 5px;
+    background: white;
+}

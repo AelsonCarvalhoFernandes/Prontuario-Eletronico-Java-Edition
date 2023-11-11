@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/listGlobal.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Pacientes Cadastrados - PreMaaP</title>
+</head>
+
+<body>
+    <div class="maxWidth">
+
+        <div class="classTitle">
+            <!--Botão voltar-->
+            <div class="btnBack">
+                <a href="#"> <span class="material-symbols-outlined">arrow_back_ios</span>
+                </a>
+            </div>
+            <!--Título-->
+            <h1 class="title">Pacientes</h1>
+        </div>
+
+        <div class="searchBar">
+            <!--Barra de pesquisa de pacientes-->
+            <input type="text" name="" id="textSearch" placeholder="Paciente..." autofocus>
+            <!--Botão pesquisar-->
+            <button class="btnSearch"> <span class="material-symbols-outlined">search</span></button>
+            <!--Botão cadastrar-->
+            <a class="btnAdd" href="create">
+                <div>
+                    <span class="material-symbols-outlined">person_add</span>
+                </div>
+                Cadastrar
+            </a>
+        </div>
+
+        <!-- Tebela -->
+        <div class="globalBorder">
+
+            <table id="myTable" class="display">
+                <thead>
+                    <tr class="headerTable">
+                        <th></th>
+                        <th>Name</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody" data-th-each="pacient: ${pacients}">
+                    <tr class="rowSelect">
+                        <td class="btnAcess">
+                            <a th:href="@{'/pacient/update/' + ${pacient.id}}">
+                                <!-- "@{'/pacient/' + ${pacient.id}}" -->
+                                <span class="material-symbols-outlined">description</span>
+                                Acessar
+                            </a>
+                        </td>
+                        <td>
+                            <p><strong></strong> <span data-th-text="${pacient.firstName}"></span> <span
+                                    data-th-text="${pacient.lastName}"></span></p>
+                        </td>
+                        <td>
+                            <p><strong></strong><span data-th-text="${pacient.cpf}"></span> </p>
+                        </td>
+                        <td>
+                            <p><strong></strong><span data-th-text="${pacient.rg}"></span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+
+            var tbody = document.getElementById('tbody');
+            var rows = tbody.getElementsByTagName('tr');
+
+            document.getElementById('textSearch').addEventListener('keyup', function () {
+                var search = document.getElementById('textSearch').value.toLowerCase();
+
+                for (var i = 0; i < rows.length; i++) {
+                    var found = false;
+                    var cells = rows[i].getElementsByTagName('td');
+
+                    for (var j = 0; j < cells.length; j++) {
+                        var value = cells[j].innerText.toLowerCase();
+
+                        if (value.indexOf(search) >= 0) {
+                            found = true;
+                        }
+                    }
+
+                    if (found) {
+                        rows[i].style.display = 'table-row';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            });
+
+
+            /*
+            var tbody = document.getElementById('tbody');
+
+            document.getElementById('textSearch').addEventListener('keyup', function () {
+
+                var search = document.getElementById('textSearch').value.toLowerCase();
+
+                for (var i = 0; i < tbody.childNodes.length; i++) { // Acessar as Linhas
+                    var found = false;
+                    var tr = tbody.childNodes[i];
+
+                    var td = tr.childNodes;
+
+                    for (var j = 1; j < td.length; j++) { // Acessar as Colunas
+                        var value = td[j].childNodes[0].nodeValue.toLowerCase();
+
+                        if (value.indexOf(search) >= 0) {
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        tr.style.display = 'table-row';
+                    } else {
+                        tr.style.display = 'none';
+                    }
+                }
+            });*/
+        </script>
+</body>
+
+</html>
