@@ -22,51 +22,51 @@ public class UserDataService {
      * Find users
      */
 
-    public UserModel findById(Long id){
-        try{
+    public UserModel findById(Long id) {
+        try {
 
             Optional<UserModel> user = userRepository.findById(id);
 
-            if(user.isPresent()){
+            if (user.isPresent()) {
                 return user.get();
             }
 
             return null;
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public UserModel findByCpf(String data){
+    public UserModel findByCpf(String data) {
         try {
             UserModel user = userRepository.findByCpf(data);
 
             return user;
 
         } catch (Exception ex) {
-            System.out.println("Error: "+ ex.getMessage());
+            System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public List<UserModel> findByRole(Role role){
+    public List<UserModel> findByRole(Role role) {
         try {
 
             return userRepository.findByRole(role);
-            
+
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public List<UserModel> listAll(){
+    public List<UserModel> listAll() {
         try {
 
             return userRepository.findAll();
-            
+
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
@@ -77,13 +77,13 @@ public class UserDataService {
      * Create users
      */
 
-    public UserModel create(UserModel model){
-        try{
+    public UserModel create(UserModel model) {
+        try {
 
             UserModel userCpf = this.findByCpf(model.getCpf());
             UserModel userRg = userRepository.findByRg(model.getRg());
 
-            if(userCpf != null || userRg != null){
+            if (userCpf != null || userRg != null) {
                 return null;
             }
 
@@ -95,7 +95,7 @@ public class UserDataService {
 
             return user;
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
@@ -104,12 +104,12 @@ public class UserDataService {
     /*
      * Update Users
      */
-    public UserModel update(UserModel model){
+    public UserModel update(UserModel model) {
         try {
 
             UserModel user = this.findById(model.getId());
 
-            if(user == null){
+            if (user == null) {
                 return null;
             }
 
@@ -120,19 +120,19 @@ public class UserDataService {
             user = userRepository.save(user);
 
             return user;
-            
+
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public boolean delete(Long id){
+    public boolean delete(Long id) {
         try {
-            
+
             UserModel user = this.findById(id);
 
-            if(user == null){
+            if (user == null) {
                 return false;
             }
 
@@ -144,5 +144,5 @@ public class UserDataService {
             return false;
         }
     }
-    
+
 }

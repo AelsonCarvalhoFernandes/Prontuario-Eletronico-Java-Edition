@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
@@ -118,6 +119,7 @@ public class PacientDataService {
 
             BeanUtils.copyProperties(dto, user);
 
+            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user.setRole(Role.Pacient);
 
             user = userDataService.create(user);
