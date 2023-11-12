@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "pacient")
@@ -23,9 +24,10 @@ public class PacientModel {
     private Long id;
 
     @Column(name = "Data_nascimento")
+    @NotBlank
     private LocalDate dateBirth;
 
-    @Column(name = "tipo_sanguineo")
+    @Column(name = "tipo_sanguineo", length = 3)
     private String tipoSanguineo;
 
     @Column(name = "doencas_previas")
@@ -34,13 +36,13 @@ public class PacientModel {
     @Column(name = "alergias")
     private String allergies;
 
-    @Column(name = "cns")
+    @Column(name = "cns", length = 15)
     private String cns;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private UserModel user;
-    
+
     public UserModel getUser() {
         return user;
     }
@@ -66,29 +68,34 @@ public class PacientModel {
         this.updatedAt = updatedAt;
     }
 
-
-    
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public LocalDate getDateBirth() {
         return dateBirth;
     }
+
     public void setDateBirth(LocalDate dateBirth) {
         this.dateBirth = dateBirth;
     }
+
     public String getTipoSanguineo() {
         return tipoSanguineo;
     }
+
     public void setTipoSanguineo(String tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
+
     public String getDoencasPrevias() {
         return doencasPrevias;
     }
+
     public void setDoencasPrevias(String doencasPrevias) {
         this.doencasPrevias = doencasPrevias;
     }
@@ -100,15 +107,19 @@ public class PacientModel {
     public void setCns(String cns) {
         this.cns = cns;
     }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }

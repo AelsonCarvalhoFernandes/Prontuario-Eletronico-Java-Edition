@@ -1,124 +1,161 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/formGlobal.css">
+    <link rel="stylesheet" href="../../static/global.css">
+    <script src="../../static/scripts/validations.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Pacientes Cadastrados - PreMaaP</title>
 </head>
 
 <body>
-    <form action="@{'/pacient/update/' + ${account.id}}" method="post">
 
-        <div>
-            <input type="hidden" name="id" th:value="${account.id}">
-        </div>
+    <!-- Cabeçalho -->
+    <div th:replace="Fragments/header"></div>
 
-        <!--Título-->
-        <div class="classTitle">
-            <!--Botão voltar-->
-            <div class="btnBack">
-                <a href="/pacient/all"> <span class="material-symbols-outlined">arrow_back_ios</span>
-                </a>
+    <!-- Formulário -->
+    <form class="maxWidth" id="updateFormPatient" th:action="@{'/pacient/update/' + ${account.id}}" method="post">
+
+        <input type="hidden" id="id" name="id" th:value="${account != null ? account.id : null}">
+
+        <input type="hidden" name="password" th:value="${account.password}">
+
+
+        <!-- Título -->
+        <div class="classTitle align">
+
+            <!-- Botão voltar -->
+            <div class="btn">
+                <a href="/pacient/all"><span class="material-symbols-outlined">arrow_back_ios</span></a>
             </div>
-            <h1 class="title">Dados do Paciente</h1>
+            <!-- Título - Nome do paciente -->
+            <h1 class="title" th:text="${account.firstName.toUpperCase()} +' '+ ${account.lastName.toUpperCase()}">
+            </h1>
         </div>
 
-        <!--Botão salvar-->
-        <div class="btnSave btns">
-            <button type="submit" value="Salvar">Salvar</button>
+        <!-- Botão atualizar -->
+        <div class="btns">
+            <button type="button" onclick="updateForm()" value="Salvar">Salvar</button>
+            <a class="btnProntuario" th:href="@{'/pacient/' + ${id}}" type="button">PRONTUÁRIO</a>
         </div>
 
-        <div>
+        <!-- FORMULÁRIO -->
+        <div class="globalBorder fontLabel">
 
-            <div class="globalBorder fontLabel">
+            <!-- Nome e Sobrenome -->
+            <div class="group-vertically group-horizontal">
                 <div>
-                    <!--Nome e Sobrenome-->
-                    <div class="group-vertically group-horizontal">
-                        <div>
-                            <label for="firstName">Nome:</label>
-                            <input id="firstName" type="text" name="firstName" th:value="${account.firstName}">
-                        </div>
-                        <div>
-                            <label for="lastName">Sobrenome:</label>
-                            <input id="lastName" type="text" name="lastName" th:value="${account.lastName}">
-                        </div>
-                    </div>
+                    <label for="firstName">Nome*</label>
+                    <input type="text" id="firstName" name="firstName" th:value="${account.firstName}" autofocus
+                        required>
+                </div>
+                <div>
+                    <label for="lastName">Sobrenome*</label>
+                    <input type="text" id="lastName" name="lastName" th:value="${account.lastName}" required>
+                </div>
+            </div>
 
-                    <!--RG, CPF, CNS, Data de Nascimento-->
-                    <div class="group-vertically ">
-                        <!--RG e CPF-->
-                        <div class="group-vertically group-horizontal space-top">
-                            <label for="rg">RG</label>
-                            <input id="rg" type="text" name="rg" th:value="${account.rg}">
-                        </div>
-                        <div>
-                            <label for="cpf">CPF</label>
-                            <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
-                        </div>
-                        <!--CNS e Data de Nascimento-->
-                        <div class="group-vertically group-horizontal space-top">
-                            <div>
-                                <label for="">CNS</label>
-                                <input type="text" name="cns" th:value="${data.cns}">
-                            </div>
-                            <div>
-                                <label for="">Data de Nascimento</label>
-                                <input type="Date" name="dateBirth" th:value="${data.dateBirth}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--E-mail-->
-                    <div class="space-top">
-                        <label for="email">E-mail:</label>
-                        <input id="email" type="text" name="email" th:value="${account.email}">
-                    </div>
-                    <!--
+            <!-- RG, CPF, CNS, Data de Nascimento -->
+            <div class="group-vertically">
+                <!-- RG e CPF -->
+                <div class="group-vertically group-horizontal space-top">
                     <div>
-                        <label for="">Tipo Sanguineo</label>
-                        <input type="text" name="tipoSanguineo" th:value="${data.tipoSanguineo}">
+                        <label for="rg">RG</label>
+                        <input id="rg" type="text" name="rg" th:value="${account.rg}">
                     </div>
-                -->
-
-                    <!-- Doenças prévias e Tipo sanguineo -->
-                    <div class="group-vertically space-top group-horizontal">
-                        <div class="size-min">
-                            <label for="tipoSanguineo">Tipo Sanguíneo</label>
-                            <select name="tipoSanguineo" id="tipoSanguineo" th:value="${data.tipoSanguineo}">
-                                <option value=""></option>
-                                <option value="a+">A+</option>
-                                <option value="b+">B+</option>
-                                <option value="ab+">AB+</option>
-                                <option value="o+">O+</option>
-                                <option value="a-">A-</option>
-                                <option value="b-">B-</option>
-                                <option value="ab-">AB-</option>
-                                <option value="o-">O-</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="doencasPrevias">Doenças previas</label>
-                            <input type="text" name="doencasPrevias" th:value="${data.doencasPrevias}">
-                        </div>
+                    <div>
+                        <label for="cpf">CPF</label>
+                        <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
+                    </div>
+                </div>
+                <!-- CNS e Data de Nascimento -->
+                <div class="group-vertically group-horizontal space-top">
+                    <div>
+                        <label for="cns">CNS</label>
+                        <input id="cns" type="text" name="cns" th:value="${data.cns}">
+                    </div>
+                    <div>
+                        <label for="dateBirth">Data de Nascimento</label>
+                        <input id="dateBirth" type="date" name="dateBirth" th:value="${data.dateBirth}">
                     </div>
                 </div>
             </div>
+
+            <!-- Endereço -->
+            <div class="group-vertically">
+                <!-- Rua e Numero -->
+                <div class="group-vertically group-horizontal space-top">
+                    <div>
+                        <label for="street">Rua</label>
+                        <input id="street" type="text" name="street"
+                            th:value="${contact != null ? contact.street : ''}">
+                    </div>
+                    <div>
+                        <label for="number">Numero</label>
+                        <input id="number" type="text" name="number"
+                            th:value="${contact != null ? contact.number : ''}">
+                    </div>
+                </div>
+                <!-- Bairro e Cidade -->
+                <div class="group-vertically group-horizontal space-top">
+                    <div>
+                        <label for="neighborhood">Bairro</label>
+                        <input id="neighborhood" type="text" name="neighborhood"
+                            th:value="${contact != null ? contact.neighborhood : ''}">
+                    </div>
+                    <div>
+                        <label for="city">Cidade</label>
+                        <input id="city" type="text" name="city" th:value="${contact != null ? contact.city : ''}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contato -->
+            <div class="group-vertically group-horizontal space-top">
+                <div>
+                    <label for="cellPhone">Celular</label>
+                    <input id="cellPhone" type="text" name="cellPhone"
+                        th:value="${contact != null ? contact.cellPhone : ''}">
+                </div>
+                <div>
+                    <label for="telephone">Telefone</label>
+                    <input id="telephone" type="text" name="telephone"
+                        th:value="${contact != null ? contact.telephone : ''}">
+                </div>
+            </div>
+
+            <!-- Email e Senha -->
+            <div class="space-top">
+                <label for="email">E-mail*</label>
+                <input id="email" type="email" name="email" required th:value="${account.email}">
+            </div>
+
+            <!-- Tipo sanguíneo e Doenças prévias -->
+            <div class="group-vertically space-top group-horizontal">
+                <div class="size-min">
+                    <label for="tipoSanguineo">Tipo Sanguineo</label>
+                    <select name="tipoSanguineo" id="tipoSanguineo" th:value="${data.tipoSanguineo}">
+                        <option value="a+">A+</option>
+                        <option value="b+">B+</option>
+                        <option value="ab+">AB+</option>
+                        <option value="o+">O+</option>
+                        <option value="a-">A-</option>
+                        <option value="b-">B-</option>
+                        <option value="ab-">AB-</option>
+                        <option value="o-">O-</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="doencasPrevias">Doenças prévias</label>
+                    <input id="doencasPrevias" type="text" name="doencasPrevias" th:value="${data.doencasPrevias}">
+                </div>
+            </div>
+        </div>
     </form>
-    </div>
-    </div>
-
-    <!-- DELETA O FORMULÁRIO DO PACIENTE
-    <div>
-        <form th:action="@{'/pacient/delete/' + ${account.id}}" method="post">
-            <input type="submit" value="Deletar">
-        </form>
-    </div>
--->
-
 </body>
 
 </html>

@@ -16,6 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+
+import org.springframework.security.access.method.P;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,11 +30,11 @@ public class UserModel implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "firstName")
+    @Column(name = "firstName", length = 40)
     @NotBlank()
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "lastName", length = 100)
     @NotBlank
     private String lastName;
 
@@ -53,11 +55,11 @@ public class UserModel implements UserDetails {
     @NotBlank
     private String password;
 
-    @Column(name = "rg")
+    @Column(name = "rg", length = 10)
     @NotBlank
     private String rg;
 
-    @Column(name = "cpf")
+    @Column(name = "cpf", length = 11)
     // @CPF
     private String cpf;
 

@@ -103,16 +103,18 @@ public class PacientController {
 
     @PostMapping("update/{id}")
     public ModelAndView updatePacient(@PathVariable(name = "id") Long id, PacientUpdateDto dto) {
+
         PacientModel pacient = pacientDataService.update(dto, id);
-        System.out.println(dto.id());
+
         if (pacient == null) {
 
+            System.out.println("\n\n\n\n\n\n\n ID DO PACIENTE CONTROLLER: " + pacient); // Apagar
             ModelAndView mv = new ModelAndView("pacient/UpdatePacient");
             mv.addObject("Message", "Houve um erro ao atualizar o paciente");
             return mv;
         }
 
-        return new ModelAndView("redirect:pacient/all");
+        return new ModelAndView("redirect:/pacient/all");
     }
 
     @PostMapping("delete/{id}")

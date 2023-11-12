@@ -21,5 +21,5 @@ public interface IUserRepository extends JpaRepository<UserModel, Long> {
     public List<UserModel> findByRole(Role role);
 
     // UserDetails findByEmail(String Email);
-    UserModel findByEmail(String email);
+    UserDetails findByEmail(String email);
 }

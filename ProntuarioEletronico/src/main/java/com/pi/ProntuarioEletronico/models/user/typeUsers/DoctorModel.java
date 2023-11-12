@@ -9,36 +9,35 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 @Table(name = "doctor")
 public class DoctorModel {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "crm")
+
+    @Column(name = "crm", length = 15)
     @NotBlank
     private String crm;
 
-    @Column(name = "formacao")
+    @Column(name = "formacao", length = 50)
     @NotBlank
     private String formacao;
 
-    @Column(name = "cargo")
+    @Column(name = "cargo", length = 50)
     @NotBlank
     private String cargo;
 
-    @Column(name = "dias_atendimento")
+    @Column(name = "dias_atendimento", length = 50)
     @NotBlank
     private String diasAtendimento;
 
-    @Column(name = "horas_atendimento")
+    @Column(name = "horas_atendimento", length = 50)
     @NotBlank
     private String horasAtendimento;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-
-
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private UserModel user;
 
@@ -46,7 +45,7 @@ public class DoctorModel {
     }
 
     public DoctorModel(Long id, @NotBlank String formacao, @NotBlank String cargo, @NotBlank String diasAtendimento,
-            @NotBlank String horasAtendimento, String crm ,LocalDateTime createdAt, LocalDateTime updatedAt) {
+            @NotBlank String horasAtendimento, String crm, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.crm = crm;
         this.formacao = formacao;

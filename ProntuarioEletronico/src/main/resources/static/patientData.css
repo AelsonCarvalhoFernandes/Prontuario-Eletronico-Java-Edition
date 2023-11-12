@@ -1,0 +1,53 @@
+.patientData {
+    border: 1px solid rgb(85, 153, 255);
+    padding: 1vw;
+    display: flex;
+}
+
+.menuPrescriptions,
+.menuHistoric {
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
+}
+
+.menuPrescriptions {
+    width: 25vw;
+    border-right: 1px solid rgb(201, 202, 204);
+}
+
+.patientData div p {
+    font-size: 2vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0.1vw 0.1vw 0.1vw rgb(59, 107, 180);
+    color: rgb(85, 153, 255);
+    text-align: center;
+    width: 100%;
+}
+
+.menuHistoric {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2vw;
+    color: white;
+    background: rgb(85, 153, 255);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+a:hover {
+    background: transparent;
+    color: rgb(85, 153, 255);
+    border: 1px solid rgb(85, 153, 255);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
