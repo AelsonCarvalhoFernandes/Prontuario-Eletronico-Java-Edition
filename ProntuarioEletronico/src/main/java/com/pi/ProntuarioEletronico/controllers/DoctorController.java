@@ -33,7 +33,7 @@ public class DoctorController {
     private ContactDataService contactDataService;
 
     @GetMapping("all")
-    public ModelAndView doctos(){
+    public ModelAndView doctos() {
 
         List<UserModel> doctorAccounts = userDataService.findByRole(Role.Doctor);
         ModelAndView mv = new ModelAndView("doctor/ListDoctors");
@@ -43,7 +43,7 @@ public class DoctorController {
     }
 
     @GetMapping("{id}")
-    public ModelAndView doctor(@PathVariable(name = "id") Long id){
+    public ModelAndView doctor(@PathVariable(name = "id") Long id) {
 
         UserModel account = userDataService.findById(id);
         DoctorModel doctorData = doctorDataService.findByUser(account);
@@ -59,35 +59,35 @@ public class DoctorController {
     }
 
     @GetMapping("create")
-    public ModelAndView create(){
+    public ModelAndView create() {
 
         ModelAndView mv = new ModelAndView("doctor/CreateDoctor");
         return mv;
     }
 
     @PostMapping("create")
-    public ModelAndView createNewDoctor(DoctorDto dto){
+    public ModelAndView createNewDoctor(DoctorDto dto) {
 
         DoctorModel doctor = doctorDataService.create(dto);
 
-        if(doctor == null){
+        if (doctor == null) {
             ModelAndView mv = new ModelAndView("doctor/CreateDoctor");
             mv.addObject("Message", "Houve um erro ao cadastrar o médico");
             return mv;
         }
 
-        return new ModelAndView("redirect:doctor/all");
+        return new ModelAndView("redirect:all");
     }
 
     @GetMapping("update/{id}")
-    public ModelAndView update(@PathVariable(name = "id") Long id){
+    public ModelAndView update(@PathVariable(name = "id") Long id) {
 
         UserModel account = userDataService.findById(id);
         DoctorModel doctorData = doctorDataService.findByUser(account);
         ContactModel contact = contactDataService.findByUser(account);
 
         ModelAndView mv = new ModelAndView("doctor/UpdateDoctor");
-        
+
         mv.addObject("account", account);
         mv.addObject("data", doctorData);
         mv.addObject("contact", contact);
@@ -96,10 +96,10 @@ public class DoctorController {
     }
 
     @PostMapping("update/{id}")
-    public ModelAndView updateDoctor(@PathVariable(name = "id") Long id, DoctorDto dto){
+    public ModelAndView updateDoctor(@PathVariable(name = "id") Long id, DoctorDto dto) {
         DoctorModel doctor = doctorDataService.update(dto, id);
 
-        if(doctor == null){
+        if (doctor == null) {
             return new ModelAndView("redirect:error");
         }
 
@@ -108,11 +108,11 @@ public class DoctorController {
     }
 
     @PostMapping("delete/{id}")
-    public ModelAndView delete(@PathVariable(name = "id") Long id){
+    public ModelAndView delete(@PathVariable(name = "id") Long id) {
         boolean deleted = doctorDataService.delete(id);
 
-        if(deleted == false){
-            ModelAndView mv = new ModelAndView("doctor/"+id);
+        if (deleted == false) {
+            ModelAndView mv = new ModelAndView("doctor/" + id);
             mv.addObject("Message", "Houve um erro ao deletar o médico");
             return mv;
         }

@@ -22,31 +22,30 @@ public class ContactModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "street")
+    @Column(name = "street", length = 50)
     @NotBlank
     private String street;
 
-    @Column(name = "number")
+    @Column(name = "number", length = 10)
     @NotBlank
     private String number;
 
-    @Column(name = "neighborhood")
+    @Column(name = "neighborhood", length = 50)
     @NotBlank
     private String neighborhood;
 
-    @Column(name = "city")
+    @Column(name = "city", length = 50)
     @NotBlank
     private String city;
 
-    @Column(name = "telephone")
-    @NotBlank
+    @Column(name = "telephone", length = 15)
     private String telephone;
 
-    @Column(name = "cellphone")
+    @Column(name = "cellphone", length = 15)
     @NotBlank
     private String cellPhone;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private UserModel user;
 

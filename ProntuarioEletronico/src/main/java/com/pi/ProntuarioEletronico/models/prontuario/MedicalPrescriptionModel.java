@@ -99,6 +99,8 @@ public class MedicalPrescriptionModel {
         this.updatedAt = updatedAt;
     }
 
+    
+
     /*
      * public static List findAll() {
      * return null;

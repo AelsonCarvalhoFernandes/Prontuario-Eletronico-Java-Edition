@@ -1,159 +1,148 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/formGlobal.css">
+    <link rel="stylesheet" href="../../static/global.css">
+    <script src="../../static/scripts/doctorValidations.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Formulário Paciente - PreMaaP</title>
+    <title>Cadastro de Médico - PreMaaP</title>
 </head>
 
 <body>
 
-    <div>
-        <form action="create" method="post">
+    <form id="createDoctorForm" class="maxWidth" action="create" method="post">
 
-            <!--Título-->
-            <div class="classTitle">
-                <!--Botão voltar-->
-                <div class="btnBack">
-                    <a href="#"> <span class="material-symbols-outlined">arrow_back_ios</span>
-                    </a>
+        <div class="classTitle align">
+            <!-- Botão voltar -->
+            <div>
+                <a class="btnBack" href="#"> <span class="material-symbols-outlined">arrow_back_ios</span> </a>
+            </div>
+            <!-- Título - Nome do paciente -->
+            <h1 class="title">Cadastro do Médico</h1>
+        </div>
+
+
+        <!-- Botão salvar -->
+        <div class="btns">
+            <button type="button" onclick="validationFormDoctor()" value="Salvar">Salvar</button>
+        </div>
+
+        <div class="globalBorder fontLabel">
+
+            <!--Nome e Sobrenome-->
+            <div class="group-vertically group-horizontal">
+                <div>
+                    <label for="firstName">Nome*</label>
+                    <input type="text" id="firstName" name="firstName" maxlength="40" autofocus required>
                 </div>
-                <h1 class="title">Cadastro do Médico</h1>
+                <div>
+                    <label for="lastName">Sobrenome*</label>
+                    <input type="text" id="lastName" name="lastName" maxlength="100" required>
+                </div>
             </div>
 
-            <!--Botões-->
-            <div class="btns">
-                <!--Botão salvar-->
-                <div class="btnSave">
-                    <button type="submit" value="Salvar">Salvar</button>
-                </div>
-            </div>
-
-            <div class="globalBorder fontLabel">
-
-                <!--Nome e Sobrenome-->
-                <div class="group-vertically group-horizontal">
-                    <div>
-                        <label for="firstName">Nome*</label>
-                        <input type="text" name="firstName" autofocus>
-                    </div>
-                    <div>
-                        <label for="lastName">Sobrenome*</label>
-                        <input type="text" name="lastName">
-                    </div>
-                </div>
-
-                <!--RG, CPF, CNS, Data de Nascimento-->
-                <div class="group-vertically ">
-                    <!--RG e CPF-->
-                    <div class="group-vertically group-horizontal space-top">
-                        <div>
-                            <label for="rg">RG</label>
-                            <input type="text" name="rg">
-                        </div>
-                        <div>
-                            <label for="cpf">CPF</label>
-                            <input type="text" name="cpf">
-                        </div>
-                    </div>
-
-                    <!--CNS e CRM-->
-                    <div class="group-vertically group-horizontal space-top">
-                        <div>
-                            <label for="cns">CNS</label>
-                            <input type="text" name="cns">
-                        </div>
-
-                        <div>
-                            <label for="crm">CRM</label>
-                            <input type="text" name="crm">
-                        </div>
-                    </div>
-                </div>
-
+            <!--RG, CPF, CRM, Formação-->
+            <div class="group-vertically ">
+                <!--RG e CPF-->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
-                        <label for="formação">Formação</label>
-                        <input type="text" name="formação">
-                    </div>
-
-                    <div>
-                        <label for="cargo">Cargo</label>
-                        <input type="text" name="cargo">
-                    </div>
-                </div>
-
-                <div class="group-vertically group-horizontal space-top">
-                    <div>
-                        <label for="diasAtendimento">Dias de atendimento</label>
-                        <input type="text" name="diasAtendimento">
+                        <label for="rg">RG</label>
+                        <input type="text" id="rg" name="rg" maxlength="10" required>
                     </div>
                     <div>
-                        <label for="horasAtendimento">Horas de atendimento</label>
-                        <input type="text" name="horasAtendimento">
-                    </div>
-                </div>
-
-                <!--Endereço-->
-                <div class="group-vertically">
-                    <!--Rua e Numero-->
-                    <div class="group-vertically group-horizontal space-top">
-                        <div>
-                            <label for="street">Rua</label>
-                            <input type="text" name="street">
-                        </div>
-                        <div>
-                            <label for="number">Numero</label>
-                            <input type="text" name="number">
-                        </div>
-                    </div>
-                    <!--Bairro e Cidade-->
-                    <div class="group-vertically group-horizontal space-top">
-                        <div>
-                            <label for="neighborhood">Bairro</label>
-                            <input type="text" name="neighborhood">
-                        </div>
-                        <div>
-                            <label for="city">Cidade</label>
-                            <input type="text" name="city">
-                        </div>
-                    </div>
-                </div>
-
-                <!--Contato-->
-                <div class="group-vertically group-horizontal space-top">
-                    <div>
-                        <label for="cellphone">Celular</label>
-                        <input type="text" name="cellphone">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" name="cpf" maxlength="11" required>
                     </div>
                     <div>
-                        <label for="telephone">Telefone</label>
-                        <input type="text" name="telephone">
-                    </div>
-                </div>
-
-                <!--Email e Senha-->
-                <div class="space-top">
-                    <label for="email">E-mail*</label>
-                    <input type="text" name="email">
-                </div>
-                <div class="group-vertically group-horizontal space-top">
-                    <div>
-                        <label for="password">Senha*</label>
-                        <input type="text" name="password">
-                    </div>
-                    <div>
-                        <label for="confirmPassword">Confirme a senha*</label>
-                        <input type="text" name="confirmPassword">
+                        <label for="crm">CRM</label>
+                        <input type="text" id="crm" name="crm" maxlength="15" required>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+
+            <div class="group-vertically group-horizontal space-top">
+                <div>
+                    <label for="formacao">Formação</label>
+                    <input type="text" id="formacao" name="formacao" maxlength="50" required>
+                </div>
+
+                <div>
+                    <label for="cargo">Cargo</label>
+                    <input type="text" id="cargo" name="cargo" maxlength="30" required>
+                </div>
+            </div>
+
+            <div class="group-vertically group-horizontal space-top">
+                <div>
+                    <label for="diasAtendimento">Dias de atendimento</label>
+                    <input type="text" id="diasAtendimento" name="diasAtendimento" maxlength="10" required>
+                </div>
+                <div>
+                    <label for="horasAtendimento">Horas de atendimento</label>
+                    <input type="text" id="horasAtendimento" name="horasAtendimento" maxlength="20" required>
+                </div>
+            </div>
+
+            <!--Endereço-->
+            <div class="group-vertically">
+                <!--Rua e Numero-->
+                <div class="group-vertically group-horizontal space-top">
+                    <div>
+                        <label for="street">Rua</label>
+                        <input type="text" id="street" name="street" maxlength="50" required>
+                    </div>
+                    <div>
+                        <label for="number">Numero</label>
+                        <input type="text" id="number" name="number" maxlength="10" required>
+                    </div>
+                </div>
+                <!--Bairro e Cidade-->
+                <div class="group-vertically group-horizontal space-top">
+                    <div>
+                        <label for="neighborhood">Bairro</label>
+                        <input type="text" id="neighborhood" name="neighborhood" maxlength="50" required>
+                    </div>
+                    <div>
+                        <label for="city">Cidade</label>
+                        <input type="text" id="city" name="city" maxlength="50" required>
+                    </div>
+                </div>
+            </div>
+
+            <!--Contato-->
+            <div class="group-vertically group-horizontal space-top">
+                <div>
+                    <label for="cellPhone">Celular</label>
+                    <input type="text" id="cellPhone" name="cellPhone" maxlength="15" required>
+                </div>
+                <div>
+                    <label for="telephone">Telefone</label>
+                    <input type="text" id="telephone" name="telephone" maxlength="15">
+                </div>
+            </div>
+
+            <!--Email e Senha-->
+            <div class="space-top">
+                <label for="email">E-mail*</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="group-vertically group-horizontal space-top">
+                <div>
+                    <label for="password">Senha*</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirme a senha*</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+            </div>
+            <p class="error-message" id="errorMessage"></p>
+        </div>
+    </form>
 </body>
 
 </html>

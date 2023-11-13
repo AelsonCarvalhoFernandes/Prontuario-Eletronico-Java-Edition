@@ -6,43 +6,12 @@ body {
 }
 
 body {
-    background: rgb(85, 153, 255);
     /*linear-gradient(to top left, #ae00ff, #00dbde)*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     height: 100%;
     width: 100%;
-}
-
-/* Título */
-.title {
-    font-size: 2.3vw;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 3px 3vw rgb(0, 41, 129);
-}
-
-/* Div do título */
-.classTitle {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-left: 15%;
-    gap: 10px;
-}
-
-div.btnBack a span.material-symbols-outlined {
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 3px 3vw rgb(0, 41, 130);
-    text-decoration: none;
-    font-size: 2.3vw;
-}
-
-div.btnBack a span.material-symbols-outlined:hover {
-    color: #c9c9c9;
-    cursor: pointer;
 }
 
 /* Textos das Labels */
@@ -55,13 +24,9 @@ div.btnBack a span.material-symbols-outlined:hover {
 /* Borda Geral Do Formulário */
 .globalBorder {
     padding: 4vw;
-    border: 1px solid #00fffb;
-    border-top: none;
+    border: 1px solid rgb(85, 153, 255);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 5%;
     background: white;
 }
 
@@ -70,33 +35,46 @@ div.btnBack a span.material-symbols-outlined:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 20%;
-    margin-left: 20%;
+}
+
+.btn,
+.btnProntuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnProntuario {
+    min-width: 10vw;
+    text-decoration: none;
+}
+
+.btnProntuario:hover {
+    border: rgb(85, 153, 255) 1px solid;
 }
 
 /* Fonte Geral dos Botões */
-button {
+.btnProntuario {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
 
-button[type=submit] {
-    color: rgb(1, 84, 209);
-    background: linear-gradient(to right, #ffffff, #ffffff);
-    border: 1px solid #00fffb;
-    border-bottom: none;
+
+.btnProntuario {
+    color: white;
+    background: rgb(85, 153, 255);
+    border: 1px solid rgb(85, 153, 255);
     border-top-right-radius: 0.2vw;
-    margin-left: 5%;
-    margin-right: 5%;
     width: 9vw;
     height: 2.8vw;
     font-size: 1.3vw;
 }
 
-button[type=submit]:hover {
-    background: #2e90ff;
+.btnProntuario:hover {
+    background: white;
     cursor: pointer;
-    color: white;
+    color: rgb(85, 153, 255);
 }
 
 /* Caixa de Textos */
@@ -106,6 +84,8 @@ button[type=submit]:hover {
 
 input[type=text],
 input[type='Date'],
+input[type='email'],
+input[type='password'],
 select,
 textarea {
     width: 100%;
@@ -118,7 +98,9 @@ textarea {
     padding-top: 0.5vw;/
 }
 
-input[type=text] {
+input[type=text],
+input[type='email'],
+input[type='password'] {
     border-bottom: 0.1vw solid #96afcc;
 }
 

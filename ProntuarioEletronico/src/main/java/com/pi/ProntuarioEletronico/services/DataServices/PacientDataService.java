@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
@@ -113,20 +114,20 @@ public class PacientDataService {
     public PacientModel create(PacientDto dto) {
 
         try {
-            System.out.println("Chegou aqui 2");
+            // System.out.println("Chegou aqui 2");
             UserModel user = new UserModel();
 
             BeanUtils.copyProperties(dto, user);
 
+            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user.setRole(Role.Pacient);
 
             user = userDataService.create(user);
 
             PacientModel paciente = new PacientModel();
-            paciente.setUser(user);
 
             BeanUtils.copyProperties(dto, paciente);
-
+            paciente.setUser(user);
             paciente.setCreatedAt(LocalDateTime.now());
             paciente.setUpdatedAt(LocalDateTime.now());
 
@@ -135,6 +136,8 @@ public class PacientDataService {
             ContactModel contact = new ContactModel();
             BeanUtils.copyProperties(dto, contact);
             contact.setUser(user);
+            // System.out.println("\n\n\n\n\n\n\n\nADICIONANDO USER NO CONTACT: " +
+            // contact.getUser().getId());
 
             contactDataService.create(contact);
 
@@ -150,27 +153,24 @@ public class PacientDataService {
      * metodo para atualizar o paciente
      */
 
-    public PacientModel update(PacientUpdateDto dto, Long Id) {
+    public PacientModel update(PacientDto dto, Long Id) {
         try {
             UserModel user = userDataService.findById(Id);
-
             BeanUtils.copyProperties(dto, user);
-
             user = userDataService.update(user);
 
             PacientModel pacient = pacientRepository.findByUser(user);
-
             BeanUtils.copyProperties(dto, pacient);
-
             pacient.setUpdatedAt(LocalDateTime.now());
-
             pacientRepository.save(pacient);
 
-            ContactModel contact = new ContactModel();
+            // ContactModel contact = new ContactModel();
+            ContactModel contact = contactDataService.findByUser(user);
+            //System.out.println("\n\n\n\n\n\n\n\nContato: " + contact.getUser().getId());
             BeanUtils.copyProperties(dto, contact);
+            contact.setUpdatedAt(LocalDateTime.now());
             contact.setUser(user);
-
-            contactDataService.create(contact);
+            contactDataService.update(contact);
 
             return pacient;
 

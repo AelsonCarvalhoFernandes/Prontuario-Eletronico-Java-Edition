@@ -14,11 +14,6 @@ body {
     width: 100%;
 }
 
-.maxWidth {
-    padding-left: 15%;
-    padding-right: 15%;
-}
-
 /* Div do título */
 .classTitle {
     display: flex;

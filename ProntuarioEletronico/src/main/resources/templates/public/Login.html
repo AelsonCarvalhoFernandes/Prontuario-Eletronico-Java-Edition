@@ -1,8 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<form th:action="@{/login.html}" method="post">
-    <label for="username">Username</label>:
-    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
-    <label for="password">Password</label>:
-    <input type="password" id="password" name="password" /> <br />
-    <input type="submit" value="Entrar" />
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/login.css">
+    <link rel="stylesheet" href="../../static/homePage.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a th:href="@{/index}" class="nav-link">Home</a></li>
+                <li><a th:href="@{/about}" class="nav-link">Quem Somos</a></li>
+                <li><a th:href="@{/login}" class="nav-link">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="login">
+
+            <div class="login-container">
+
+                <p th:if="${param.error}" class="error-message">CREDENCIAIS INVÁLIDAS: TENTE NOVAMENTE.</p>
+
+                <img class="icon-medical" src="../../static/assets/icons/user.png" alt="icone_usuario" />
+                <h2>Entrar no Sistema</h2>
+                <form th:action="@{/login}" method="post">
+
+                    <div class="labels-container">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="username" autofocus="autofocus"
+                            placeholder="exemplo@email.com" required /> <br />
+
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" placeholder="Sua senha" required /> <br />
+                    </div>
+                    <div>
+                        <input type="submit" value="Entrar" class="btn-login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <span>
+            © Copyright – Todos os Direitos Reservados – Premaap - 2023
+        </span>
+        <div class="social-icons">
+            <img src="../../static/assets/icons/instagram.png" alt="logotipo do Instagram">
+            <img src="../../static/assets/icons/facebook.png" alt="logotipo do Facebook">
+            <img src="../../static/assets/icons/linkedin.png" alt="logotipo do LinkedIn">
+        </div>
+    </div>
+    <script src="../../static/scripts/hamburguer_nav.js"></script>
+</body>
+
+</html>

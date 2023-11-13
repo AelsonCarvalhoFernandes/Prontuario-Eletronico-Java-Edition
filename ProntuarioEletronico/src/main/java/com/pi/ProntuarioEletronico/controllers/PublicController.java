@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pi.ProntuarioEletronico.services.DataServices.PacientDataService;
@@ -11,43 +12,52 @@ import com.pi.ProntuarioEletronico.services.DataServices.PacientDataService;
 @Controller
 public class PublicController {
 
-
     @Autowired
     private PacientDataService pacientDataService;
 
-    @GetMapping("index")
-    public ModelAndView index(){
+    @GetMapping({ "/", "index" })
+    public ModelAndView index() {
         ModelAndView mv = new ModelAndView("public/index");
 
         return mv;
     }
+
     @GetMapping("about")
-    public ModelAndView about(){
+    public ModelAndView about() {
         ModelAndView mv = new ModelAndView("public/about");
 
         return mv;
     }
 
     @GetMapping("login")
-    public ModelAndView login(){
+    public ModelAndView login() {
         ModelAndView mv = new ModelAndView("public/login");
 
         return mv;
     }
 
     @PostMapping("authenticate")
-    public ModelAndView authenticate(){
+    public ModelAndView authenticate(@RequestParam String email, @RequestParam String password) {
         return new ModelAndView();
     }
 
-    @GetMapping("teste")
-    public ModelAndView teste(){
+    @GetMapping("/home")
+    public ModelAndView acessed() {
+        
+        ModelAndView mv = new ModelAndView("prontuario/home");
 
-        ModelAndView mv = new ModelAndView("public/teste");
+        return mv;
+    }
+
+    @GetMapping("teste")
+    public ModelAndView teste() {
+
+        ModelAndView mv = new ModelAndView("prontuario/teste");
 
         mv.addObject("pacients", pacientDataService.listAll());
 
         return mv;
 
     }
+
 }

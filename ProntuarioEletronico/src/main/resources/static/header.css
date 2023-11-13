@@ -1,36 +1,57 @@
 body {
-    margin: 0%;
+    margin: 0;
+    padding: 0;
 }
 
-ul {
-    margin: 0%;
+header {
+    box-shadow: 0px 1px 12px 0px #00000033;
+    align-items: center;
+    display: flex;
+    background-color: #2C5EDE;
+    border-radius: 0px 0px 50px 50px;
+    padding: 1vw 0px 1vw 3vw;
+    height: 5vw;
+    gap: 10vw;
+}
+
+.logo img {
+    max-width: 15vw;
+    height: 15vw;
+}
+
+
+ul.fontText {
     list-style-type: none;
-    text-align: center;
-    overflow: hidden;
-    background-color: blue;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-li {
+ul.fontText li {
     display: inline-block;
+    margin-right: 50px;
 }
 
-ul li a {
-    font-size: 1vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
+ul.fontText li a {
     text-decoration: none;
-    color: white;
+    color: #fff;
+    padding: 15px;
     display: block;
-    padding: 1.3vw 2vw;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1vw;
+    box-sizing: border-box;
 }
 
 .profile {
     float: right;
-    background: rgb(0, 183, 255);
+    background: #002e8b;
+    border-radius: 100vw;
 }
 
-li a:hover:not(.active) {
-    background-color: rgb(0, 119, 255);
+ul.fontText li a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #2C5EDE;
 }
 
 li.dropdown {
@@ -38,22 +59,22 @@ li.dropdown {
 }
 
 .dropdown-content {
-    margin-top: 0.1%;
     display: none;
     position: absolute;
-    background-color: #0000fe;
+    background-color: #2C5EDE;
     min-width: 160px;
     z-index: 1;
     right: 0;
+    margin-right: 50px;
 }
 
 .dropdown-content a {
-    color: rgb(31, 31, 31);
+    color: rgb(255, 255, 255);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
-    border-bottom: 0.1vw solid white;
+    border-bottom: 0.1vw solid rgb(46, 46, 46);
 }
 
 /* Tira a borda de baixo do último elemento de um grupo */
@@ -62,26 +83,14 @@ li.dropdown {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
-    color: white;
+    border-radius: 3px;
+    color: #2C5EDE;
+    box-shadow: 0px 1px 12px 0px #00000033;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    background: rgba(0, 119, 255, 0.374);
+    background: #163175bd;
     border-radius: 10px;
     border-top-right-radius: 0;
-}
-
-.active {
-    background-color: #ffffff;
-    color: blue;
-    font-weight: bold;
-}
-
-@media screen and (max-width: 1150px) {
-    ul li a {
-        font-size: 1.3vw;
-        padding: 2vw 3vw;
-    }
 }

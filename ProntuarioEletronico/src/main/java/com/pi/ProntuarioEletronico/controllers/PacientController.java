@@ -52,8 +52,7 @@ public class PacientController {
         PacientModel pacientData = pacientDataService.findByUser(account);
         ContactModel contact = contactDataService.findByUser(account);
 
-        ModelAndView mv = new ModelAndView("pacient/PacientData"); // troquei o "pacient/PacientData" por
-                                                                   // "pacient/UpdatePacient"
+        ModelAndView mv = new ModelAndView("pacient/PacientData");
 
         mv.addObject("account", account);
         mv.addObject("pacient", pacientData);
@@ -89,6 +88,12 @@ public class PacientController {
     public ModelAndView update(@PathVariable(name = "id") Long id) {
 
         UserModel account = userDataService.findById(id);
+        if (account == null) {
+            // Lide com a situação em que o usuário não foi encontrado, redirecione ou
+            // retorne uma mensagem de erro.
+            // Exemplo de redirecionamento para uma página de erro:
+            return new ModelAndView("redirect:/error");
+        }
         PacientModel pacientData = pacientDataService.findByUser(account);
         ContactModel contact = contactDataService.findByUser(account);
 
@@ -102,17 +107,17 @@ public class PacientController {
     }
 
     @PostMapping("update/{id}")
-    public ModelAndView updatePacient(@PathVariable(name = "id") Long id, PacientUpdateDto dto) {
-        PacientModel pacient = pacientDataService.update(dto, id);
-        System.out.println(dto.id());
+    public ModelAndView updatePacient(@PathVariable(name = "id") Long id, PacientDto dto) {
+        Long idP = Long.parseLong(dto.id());
+        PacientModel pacient = pacientDataService.update(dto, idP);
+
         if (pacient == null) {
 
             ModelAndView mv = new ModelAndView("pacient/UpdatePacient");
             mv.addObject("Message", "Houve um erro ao atualizar o paciente");
             return mv;
         }
-
-        return new ModelAndView("redirect:pacient/all");
+        return new ModelAndView("redirect:/pacient/all");
     }
 
     @PostMapping("delete/{id}")

@@ -1,0 +1,84 @@
+.maxWidth {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+/* Título */
+.title {
+    font-size: 2.3vw;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #004ba0;
+}
+
+/* Div do título */
+.classTitle {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    margin-bottom: 2%;
+}
+
+button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+button[type=button] {
+    color: white;
+    background: rgb(85, 153, 255);
+    border: 1px solid rgb(85, 153, 255);
+    border-top-right-radius: 0.2vw;
+    width: 9vw;
+    height: 2.8vw;
+    font-size: 1.3vw;
+}
+
+button[type=button]:hover {
+    background: white;
+    cursor: pointer;
+    color: rgb(85, 153, 255);
+}
+
+.btnBack {
+    color: #004ba0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background: transparent;
+    width: 30%;
+    text-decoration: none;
+}
+
+.btnBack:hover {
+    border: none;
+}
+
+.btnBack .material-symbols-outlined {
+    font-size: 2vw;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+}
+
+.btnBack a {
+    color: #004ba0;
+}
+
+.btnBack a .material-symbols-outlined:hover {
+    color: rgb(0, 195, 255);
+    cursor: pointer;
+    border: none;
+}
+
+.align {
+    display: flex;
+    width: 100%;
+}
+
+.error-message {
+    color: red;
+}

@@ -4,27 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreMaaP - Prescrever Receita</title>
     <link rel="stylesheet" href="../../static/header.css">
-    <title>Document</title>
 </head>
 
 <body>
 
-    <ul>
-        <li><a href="#MeusDados">MEUS DADOS</a></li>
-        <li><a class="active" href="#Inicio">INÍCIO</a></li>
-        <li><a href="#Pacientes">PACIENTES</a></li>
+    <header>
+        <div class="logo">
+            <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
+        </div>
+        <ul class="fontText">
+            <li><a href="">MEUS DADOS</a></li>
+            <li><a href="/pacient/all">PACIENTES</a></li>
 
-        <li class="profile dropdown">
-            <a href="javascript:void(0)" class="dropbtn">PERFIL</a>
-            <div class="dropdown-content">
-                <a href="#">Configurações</a>
-                <a href="#">Sair</a>
-            </div>
-        </li>
-
-    </ul>
-
+            <li class="profile dropdown">
+                <a href="javascript:void(0)" class="dropbtn">PERFIL</a>
+                <div class="dropdown-content">
+                    <a href="/logout">Sair</a>
+                </div>
+            </li>
+        </ul>
+    </header>
 </body>
 
 </html>

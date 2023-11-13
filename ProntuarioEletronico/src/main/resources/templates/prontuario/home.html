@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Dados - PreMaaP</title>
+</head>
+
+<body>
+
+    <div th:if="${#authorization.expression('hasRole(''ROLE_DOCTOR'')')}" th:with="user=${#authentication.principal}">
+        <!-- Seu código que depende do usuário autenticado -->
+        <p th:if="${user.authorities.contains('ROLE_DOCTOR')}" th:text="'User is a DOCTOR - ID: ' + ${user.id}"></p>
+        <p th:unless="${user.authorities.contains('ROLE_DOCTOR')}" th:text="'User is not a DOCTOR'"></p>
+    </div>
+
+
+
+</body>
+
+</html>

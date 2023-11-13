@@ -1,0 +1,237 @@
+/* Estilização da seção "Quem Somos" */
+#quem-somos {
+  position: relative;
+  z-index: -1;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Banner Quem Somos*/
+.banner-quemSomos {
+  width: 100%;
+  position: relative;
+}
+
+.banner-quemSomos img{
+  width: 100%;
+}
+
+.banner-quemSomos h1{
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 4.4vw;
+  position: absolute;
+  top: 0px;
+  margin: 23vw 37.8vw 12.3vw 7.7vw;
+}
+
+/* Resumo Quem Somos*/
+.resumo {
+  display: flex;
+  align-items: center;
+  margin: 0 5%;
+  padding: 20px 30px;
+}
+
+.resumo img {
+  width: 40vw;
+  height: 60vh;
+  margin: 10.6vw 0px 0px 9vw;
+}
+
+
+.text h2 {
+  font-size: 2.7vw;
+  margin-top: 5vw;
+  box-shadow: rgb(100, 237, 191) 0px -0.5em inset;
+  display: inline;
+  padding: 0px 5px;
+  margin: 0px auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 52px;
+  color: rgb(0, 0, 0);
+}
+
+.text p {
+  line-height: 2rem;
+  margin: 5vw 0px 1.3vw;
+  text-align: justify;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Estilização das seções de cards "Missão", "Visão" e "Valores" */
+.cards {
+  margin-top: 5vw;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 40px 30px 40px 30px;
+  background-color: rgb(237, 237, 237);
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 300px;
+}
+
+.tituloImagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tituloImagem h2 {
+  font-size: 2.2rem;
+  box-shadow: rgb(100, 237, 191) 0px -0.5em inset;
+  display: inline;
+  padding: 0px 9px;
+  margin: 0px auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+
+.tituloImagem img {
+  width: 5.4vw;
+  height: 4.9vh;
+  margin-left: 3vw;
+}
+
+.card p{
+  text-align: start;
+  margin-top: 1rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Estilização da seção "O que Falam Sobre Nós" */
+#o-que-falam-sobre-nos {
+  text-align: center;
+  padding: 2rem;
+}
+
+h2 {
+  box-shadow: rgb(100, 237, 191) 0px -0.5em inset;
+  display: inline;
+  padding: 0px 5px;
+  font-size: 42px;
+  margin: 0;
+}
+
+.depoimentos {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.depoimento {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 350px; /* Define o tamanho máximo dos depoimentos */
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.depoimento p{
+  margin-bottom: 1rem;
+  padding: 30px 0px 10px;
+  color: rgb(73, 73, 73);
+  font-style: italic;
+}
+
+.depoimento .name{
+  position: absolute;
+  bottom: 14px;
+  right: 20px;
+  color: rgb(0, 0, 0);
+  font-style: italic;
+}
+
+.depoimento img {
+  width: 135px;
+  height: 135px;
+  margin: 0px auto;
+  padding: 5px;
+  border: 2.2px solid rgb(100, 237, 191);
+  border-radius: 50%;
+}
+
+.depoimento p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 820px) {
+  .resumo {
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .resumo img {
+    width: 50vw;
+    height: 50vh;
+    margin: 0;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .card {
+    max-width: 600px;
+  }
+  .tituloImagem img {
+    width: 5.4vw;
+    height: 3.9vh;
+    margin-left: -4vw;
+}
+}
+
+@media (max-width: 428px) {
+  .resumo {
+    text-align: center;
+    flex-direction: column;
+  }
+  .resumo img{
+    width: auto;
+    margin: 0;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .card {
+    max-width: 100%;
+  }
+
+  .tituloImagem {
+    flex-direction: column-reverse;
+  }
+
+  .tituloImagem img{
+    width: auto;
+    margin: 0;
+  }
+}

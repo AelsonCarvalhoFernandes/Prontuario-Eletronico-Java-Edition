@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/formGlobal.css">
+    <link rel="stylesheet" href="../../static/global.css">
+    <script src="../../static/scripts/validations.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Dados do Paciente - PreMaaP</title>
 </head>
 
 <body>
-    <form action="create" method="post">
+    <!--h1 th:text="${doctorData.firstName}"></h1-->
+    <!--Cabeçalho-->
+    <div th:replace="Fragments/header"></div>
+
+    <!--Formulário-->
+    <form class="maxWidth" id="formPatient" action="create" method="post">
 
         <!--Título-->
         <div class="classTitle">
@@ -27,7 +34,7 @@
         <div class="btns">
             <!--Botão salvar-->
             <div class="btnSave">
-                <button type="submit" value="Salvar">Salvar</button>
+                <button type="button" onclick="validationForm()" value="Salvar">Salvar</button>
             </div>
         </div>
 
@@ -37,11 +44,11 @@
             <div class="group-vertically group-horizontal">
                 <div>
                     <label for="firstName">Nome*</label>
-                    <input type="text" name="firstName" autofocus>
+                    <input type="text" name="firstName" maxlength="40" autofocus required>
                 </div>
                 <div>
                     <label for="lastName">Sobrenome*</label>
-                    <input type="text" name="lastName">
+                    <input type="text" name="lastName" maxlength="100" required>
                 </div>
             </div>
 
@@ -51,22 +58,22 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="rg">RG</label>
-                        <input type="text" name="rg">
+                        <input type="text" name="rg" maxlength="10" required>
                     </div>
                     <div>
                         <label for="cpf">CPF</label>
-                        <input type="text" name="cpf">
+                        <input type="text" name="cpf" maxlength="11" required>
                     </div>
                 </div>
                 <!--CNS e Data de Nascimento-->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="cns">CNS</label>
-                        <input type="text" name="cns">
+                        <input type="text" name="cns" maxlength="15">
                     </div>
                     <div>
                         <label for="dateBirth">Data de Nascimento</label>
-                        <input type="Date" name="dateBirth">
+                        <input type="Date" name="dateBirth" required>
                     </div>
                 </div>
             </div>
@@ -77,22 +84,22 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="street">Rua</label>
-                        <input type="text" name="street">
+                        <input type="text" name="street" maxlength="50" required>
                     </div>
                     <div>
                         <label for="number">Numero</label>
-                        <input type="text" name="number">
+                        <input type="text" name="number" maxlength="10" required>
                     </div>
                 </div>
                 <!--Bairro e Cidade-->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="neighborhood">Bairro</label>
-                        <input type="text" name="neighborhood">
+                        <input type="text" name="neighborhood" maxlength="50" required>
                     </div>
                     <div>
                         <label for="city">Cidade</label>
-                        <input type="text" name="city">
+                        <input type="text" name="city" maxlength="50" required>
                     </div>
                 </div>
             </div>
@@ -101,35 +108,37 @@
             <div class="group-vertically group-horizontal space-top">
                 <div>
                     <label for="cellphone">Celular</label>
-                    <input type="text" name="cellphone">
+                    <input id="cellPhone" type="text" name="cellPhone" maxlength="15" required>
                 </div>
                 <div>
                     <label for="telephone">Telefone</label>
-                    <input type="text" name="telephone">
+                    <input id="telephone" type="text" name="telephone" maxlength="15">
                 </div>
             </div>
 
             <!--Email e Senha-->
             <div class="space-top">
                 <label for="email">E-mail*</label>
-                <input type="text" name="email">
+                <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
             </div>
+
             <div class="group-vertically group-horizontal space-top">
                 <div>
                     <label for="password">Senha*</label>
-                    <input type="text" name="password">
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <div>
                     <label for="confirmPassword">Confirme a senha*</label>
-                    <input type="text" name="confirmPassword">
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
             </div>
+            <p class="error-message" id="errorMessage"></p>
 
             <!--Tipo sanguíneo e Doenças prévias-->
             <div class="group-vertically space-top group-horizontal">
                 <div class="size-min">
-                    <label for="bloodType">Tipo Sanguineo</label>
-                    <select name="bloodType" id="bloodType">
+                    <label for="tipoSanguineo">Tipo Sanguineo</label>
+                    <select name="tipoSanguineo" id="tipoSanguineo">
                         <option value="a+">A+</option>
                         <option value="b+">B+</option>
                         <option value="ab+">AB+</option>
