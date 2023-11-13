@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Prescriptions for Patient</title>
+</head>
+
+<body>
+    <h2>Medical Prescriptions for Patient</h2>
+
+    <div th:if="${patient != null}">
+        <p><strong>Patient ID:</strong> <span th:text="${patient.id}"></span></p>
+        <p><strong>Patient Name:</strong> <span th:text="${patient.firstName}"></span></p>
+    </div>
+
+    <div th:if="${medicalPrescriptions.size() == 0}">
+        <p>No medical prescriptions found for this patient.</p>
+    </div>
+
+    <div th:if="${medicalPrescriptions.size() > 0}" th:each="prescription : ${medicalPrescriptions}"
+        class="prescription">
+        <div>
+            <p><strong>Prescription ID:</strong> <span th:text="${prescription.id}"></span></p>
+            <p><strong>Description:</strong> <span th:text="${prescription.description}"></span></p>
+            <p><strong>Doctor:</strong> <span th:if="${prescription.doctor != null}"
+                    th:text="${prescription.doctor.name}"></span></p>
+            <p><strong>Created At:</strong> <span th:text="${prescription.createdAt}"></span></p>
+            <p><strong>Updated At:</strong> <span th:text="${prescription.updatedAt}"></span></p>
+        </div>
+        <hr />
+    </div>
+</body>
+
+</html>

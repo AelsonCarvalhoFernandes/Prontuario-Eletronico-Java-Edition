@@ -1,19 +1,12 @@
 package com.pi.ProntuarioEletronico.controllers;
 
-import javax.naming.AuthenticationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.pi.ProntuarioEletronico.services.DataServices.PacientDataService;
 
 @Controller
@@ -50,6 +43,7 @@ public class PublicController {
 
     @GetMapping("/home")
     public ModelAndView acessed() {
+        
         ModelAndView mv = new ModelAndView("prontuario/home");
 
         return mv;

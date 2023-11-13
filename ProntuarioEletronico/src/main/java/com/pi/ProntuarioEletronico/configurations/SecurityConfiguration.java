@@ -30,9 +30,13 @@ public class SecurityConfiguration {
                                                 .hasRole("DOCTOR")
                                                 .requestMatchers(HttpMethod.POST, "/home").hasRole("DOCTOR")
                                                 .requestMatchers(HttpMethod.GET, "/home").hasRole("DOCTOR")
+                                                .requestMatchers(HttpMethod.GET, "/prescriptions/**").hasRole("DOCTOR")
+                                                .requestMatchers(HttpMethod.POST, "/prescriptions/**").hasRole("DOCTOR")
+                                                .requestMatchers(HttpMethod.GET, "/laudos/**").hasRole("DOCTOR")
+                                                .anyRequest().permitAll()
 
                                 // .anyRequest().permitAll()
-                                // .anyRequest().authenticated())
+                                // .anyRequest().authenticated()
                                 )
 
                                 .formLogin(formLogin -> formLogin
@@ -49,14 +53,13 @@ public class SecurityConfiguration {
         public AuthenticationSuccessHandler successHandler() {
                 return (request, response, authentication) -> {
 
-                        if (request.isUserInRole("ROLE_DOCTOR")) {
-                                response.sendRedirect("/doctor/all");
+                        if (authentication.getAuthorities().stream()
+                                        .anyMatch(a -> a.getAuthority().equals("ROLE_DOCTOR"))) {
+                                response.sendRedirect("/pacient/all");
                         } else if (request.isUserInRole("ROLE_PACIENT")) {
-                                response.sendRedirect("/pacient/all");
+                                response.sendRedirect("/pacient/create");
                         } else {
-                                System.out.println("Não é paciente nem médico" +
-                                                authentication.getPrincipal());
-                                response.sendRedirect("/pacient/all");
+                                response.sendRedirect("/home");
                         }
                 };
         }

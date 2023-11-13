@@ -33,13 +33,13 @@
             <div class="menuPrescriptions">
                 <p>Nova Prescrição</p>
                 <a href="">ATESTADO</a></li>
-                <a href="">RECEITA</a></li>
+                <a href="/prescriptions/createMedicalPrescription">RECEITA</a></li>
                 <a href="">LAUDO</a></li>
             </div>
             <div class="menuHistoric">
                 <P>Histórico</P>
                 <a href="">ATESTADOS</a></li>
-                <a href="">RECEITAS</a></li>
+                <a th:href="'/prescriptions/' + ${account.id} + '/all'">RECEITAS</a></li>
                 <a href="">LAUDOS</a></li>
             </div>
         </div>

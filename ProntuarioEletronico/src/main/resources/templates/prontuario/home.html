@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,13 @@
 
 <body>
 
-    <h1>LOGADO!!!!!!</h1>
-    <div sec:authentication="principal.id"></div>
+    <div th:if="${#authorization.expression('hasRole(''ROLE_DOCTOR'')')}" th:with="user=${#authentication.principal}">
+        <!-- Seu código que depende do usuário autenticado -->
+        <p th:if="${user.authorities.contains('ROLE_DOCTOR')}" th:text="'User is a DOCTOR - ID: ' + ${user.id}"></p>
+        <p th:unless="${user.authorities.contains('ROLE_DOCTOR')}" th:text="'User is not a DOCTOR'"></p>
+    </div>
+
+
 
 </body>
 

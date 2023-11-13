@@ -153,27 +153,24 @@ public class PacientDataService {
      * metodo para atualizar o paciente
      */
 
-    public PacientModel update(PacientUpdateDto dto, Long Id) {
+    public PacientModel update(PacientDto dto, Long Id) {
         try {
             UserModel user = userDataService.findById(Id);
-
             BeanUtils.copyProperties(dto, user);
-
             user = userDataService.update(user);
 
             PacientModel pacient = pacientRepository.findByUser(user);
-
             BeanUtils.copyProperties(dto, pacient);
-
             pacient.setUpdatedAt(LocalDateTime.now());
-
             pacientRepository.save(pacient);
 
-            ContactModel contact = new ContactModel();
+            // ContactModel contact = new ContactModel();
+            ContactModel contact = contactDataService.findByUser(user);
+            //System.out.println("\n\n\n\n\n\n\n\nContato: " + contact.getUser().getId());
             BeanUtils.copyProperties(dto, contact);
+            contact.setUpdatedAt(LocalDateTime.now());
             contact.setUser(user);
-
-            contactDataService.create(contact);
+            contactDataService.update(contact);
 
             return pacient;
 

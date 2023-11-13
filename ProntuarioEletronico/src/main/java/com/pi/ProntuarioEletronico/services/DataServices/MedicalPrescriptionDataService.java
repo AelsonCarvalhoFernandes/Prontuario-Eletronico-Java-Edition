@@ -19,6 +19,11 @@ public class MedicalPrescriptionDataService {
     @Autowired
     private MedicalPrescriptionRepository medicalPrescriptionRepository;
 
+    @Autowired
+    private PacientDataService pacientDataService;
+    @Autowired
+    private DoctorDataService doctorDataService;
+
     /*
      * Metodos de busca das receitas
      */
@@ -53,6 +58,15 @@ public class MedicalPrescriptionDataService {
         }
     }
 
+    public List<MedicalPrescriptionModel> findByPatientId(Long patientId) {
+        try {
+
+            return medicalPrescriptionRepository.findByPatientId(patientId);
+        } catch (Exception ex) {
+            throw new RuntimeException("Houve um erro ao buscar as receitas para o paciente: " + ex.getMessage(), ex);
+        }
+    }
+
     /*
      * Método de criação de receitas
      */
@@ -76,8 +90,9 @@ public class MedicalPrescriptionDataService {
         try {
             MedicalPrescriptionModel medicalPrescription = new MedicalPrescriptionModel();
             BeanUtils.copyProperties(dto, medicalPrescription);
-            medicalPrescription.setPatient(medicalPrescription.getPatient());
-            medicalPrescription.setDoctor(medicalPrescription.getDoctor());
+
+            medicalPrescription.setPatient(pacientDataService.findByCns(dto.cnsPacient()));
+            medicalPrescription.setDoctor(doctorDataService.findByCrm(dto.crmMedico()));
             medicalPrescription.setCreatedAt(LocalDateTime.now());
             medicalPrescription.setUpdatedAt(LocalDateTime.now());
             return medicalPrescription;

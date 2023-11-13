@@ -20,7 +20,7 @@
     <!-- Formulário -->
     <form class="maxWidth" id="updateFormPatient" th:action="@{'/pacient/update/' + ${account.id}}" method="post">
 
-        <input type="hidden" id="id" name="id" th:value="${account != null ? account.id : null}">
+        <input type="hidden" id="id" name="id" th:value="${account.id}">
 
         <input type="hidden" name="password" th:value="${account.password}">
 
