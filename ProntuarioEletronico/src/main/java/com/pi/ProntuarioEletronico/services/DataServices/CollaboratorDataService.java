@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.ProntuarioEletronico.models.user.UserModel;
@@ -16,7 +17,7 @@ import com.pi.ProntuarioEletronico.resources.enums.Role;
 
 @Service
 public class CollaboratorDataService {
-    
+
     @Autowired
     private ICollaboratorRepository collaboratorRepository;
 
@@ -26,12 +27,12 @@ public class CollaboratorDataService {
     @Autowired
     private ContactDataService contactDataService;
 
-    public List<CollaboratorModel> listAll(){
-        try{
+    public List<CollaboratorModel> listAll() {
+        try {
 
             return collaboratorRepository.findAll();
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
 
             System.out.println("Error: " + ex.getMessage());
             return null;
@@ -39,29 +40,30 @@ public class CollaboratorDataService {
         }
     }
 
-    public CollaboratorModel findByUser(UserModel user){
+    public CollaboratorModel findByUser(UserModel user) {
         try {
 
             CollaboratorModel collaborator = collaboratorRepository.findByUser(user);
 
             return collaborator;
-            
+
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public CollaboratorModel create(CollaboratorDto dto){
+    public CollaboratorModel create(CollaboratorDto dto) {
         try {
 
             UserModel user = userDataService.findByCpf(dto.cpf());
-            if(user != null){
+            if (user != null) {
                 return null;
             }
             user = new UserModel();
             BeanUtils.copyProperties(dto, user);
 
+            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user.setRole(Role.Collaborator);
             user = userDataService.create(user);
 
@@ -88,10 +90,10 @@ public class CollaboratorDataService {
         }
     }
 
-    public CollaboratorModel update(Long id, CollaboratorDto dto){
+    public CollaboratorModel update(Long id, CollaboratorDto dto) {
         try {
             UserModel user = userDataService.findById(id);
-            if(user == null){
+            if (user == null) {
                 return null;
             }
 
@@ -117,10 +119,10 @@ public class CollaboratorDataService {
         }
     }
 
-    public boolean delete(Long id){
+    public boolean delete(Long id) {
         try {
             UserModel user = userDataService.findById(id);
-            if(user == null){
+            if (user == null) {
                 return false;
             }
 

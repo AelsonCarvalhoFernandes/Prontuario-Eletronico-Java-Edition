@@ -114,7 +114,7 @@ public class PacientDataService {
     public PacientModel create(PacientDto dto) {
 
         try {
-            System.out.println("Chegou aqui 2");
+            // System.out.println("Chegou aqui 2");
             UserModel user = new UserModel();
 
             BeanUtils.copyProperties(dto, user);
@@ -125,10 +125,9 @@ public class PacientDataService {
             user = userDataService.create(user);
 
             PacientModel paciente = new PacientModel();
-            paciente.setUser(user);
 
             BeanUtils.copyProperties(dto, paciente);
-
+            paciente.setUser(user);
             paciente.setCreatedAt(LocalDateTime.now());
             paciente.setUpdatedAt(LocalDateTime.now());
 
@@ -137,6 +136,8 @@ public class PacientDataService {
             ContactModel contact = new ContactModel();
             BeanUtils.copyProperties(dto, contact);
             contact.setUser(user);
+            // System.out.println("\n\n\n\n\n\n\n\nADICIONANDO USER NO CONTACT: " +
+            // contact.getUser().getId());
 
             contactDataService.create(contact);
 

@@ -24,7 +24,6 @@ public class PacientModel {
     private Long id;
 
     @Column(name = "Data_nascimento")
-    @NotBlank
     private LocalDate dateBirth;
 
     @Column(name = "tipo_sanguineo", length = 3)

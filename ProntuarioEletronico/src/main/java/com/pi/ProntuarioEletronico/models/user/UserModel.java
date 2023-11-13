@@ -119,7 +119,7 @@ public class UserModel implements UserDetails {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_ADMIN"));
         } else if (this.role == Role.Doctor) {
-            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            return List.of(new SimpleGrantedAuthority("ROLE_DOCTOR"));
         } else if (this.role == Role.Collaborator) {
             return List.of(new SimpleGrantedAuthority("ROLE_COLLABORATOR"));
         } else {

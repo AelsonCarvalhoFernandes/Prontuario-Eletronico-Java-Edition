@@ -9,6 +9,7 @@ import com.pi.ProntuarioEletronico.resources.enums.Role;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,12 +26,14 @@ public class DoctorDataService {
     @Autowired
     private ContactDataService contactDataService;
 
-    public DoctorModel create(DoctorDto dto){
-        try{
-        System.out.println("Chegou aqui!!");
+    public DoctorModel create(DoctorDto dto) {
+        try {
+            // System.out.println("Chegou aqui!!");
             UserModel user = new UserModel();
-            user.setRole(Role.Doctor);
+
             BeanUtils.copyProperties(dto, user);
+            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+            user.setRole(Role.Doctor);
 
             DoctorModel doctor = new DoctorModel();
             BeanUtils.copyProperties(dto, doctor);
@@ -50,16 +53,16 @@ public class DoctorDataService {
 
             return doctor;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public DoctorModel findbyId(Long id){
-        try{
+    public DoctorModel findbyId(Long id) {
+        try {
             UserModel user = userDataService.findById(id);
-            if(user == null){
+            if (user == null) {
                 return null;
             }
 
@@ -67,37 +70,37 @@ public class DoctorDataService {
 
             return doctor;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public DoctorModel findByUser(UserModel user){
-        try{
+    public DoctorModel findByUser(UserModel user) {
+        try {
             DoctorModel doctor = doctorRepository.findByUser(user);
             return doctor;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
-            
+
         }
     }
 
-    public DoctorModel findByCrm(String crm){
-        try{
+    public DoctorModel findByCrm(String crm) {
+        try {
             DoctorModel doctor = doctorRepository.findByCrm(crm);
             return doctor;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public DoctorModel update(DoctorDto dto, Long id){
-        try{
+    public DoctorModel update(DoctorDto dto, Long id) {
+        try {
             UserModel user = userDataService.findById(id);
             BeanUtils.copyProperties(dto, user);
 
@@ -117,14 +120,14 @@ public class DoctorDataService {
 
             return doctor;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return null;
         }
     }
 
-    public boolean delete(Long id){
-        try{
+    public boolean delete(Long id) {
+        try {
 
             UserModel user = userDataService.findById(id);
 
@@ -136,7 +139,7 @@ public class DoctorDataService {
 
             return true;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             return false;
         }

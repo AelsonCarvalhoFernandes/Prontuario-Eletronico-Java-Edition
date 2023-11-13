@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/listGlobal.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="../../static/scripts/validations.js"></script>
     <title>Pacientes Cadastrados - PreMaaP</title>
 </head>
 
@@ -28,7 +29,8 @@
 
         <div class="searchBar">
             <!--Barra de pesquisa de pacientes-->
-            <input type="text" name="" id="textSearch" placeholder="Paciente..." autofocus>
+            <input type="text" name="textSearch" id="textSearch" placeholder="Paciente..." oninput="filterTable()"
+                autofocus>
             <!--Botão pesquisar-->
             <button class="btnSearch"> <span class="material-symbols-outlined">search</span></button>
             <!--Botão cadastrar-->
@@ -76,64 +78,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
 
-        <script>
-
-            var tbody = document.getElementById('tbody');
-            var rows = tbody.getElementsByTagName('tr');
-
-            document.getElementById('textSearch').addEventListener('keyup', function () {
-                var search = document.getElementById('textSearch').value.toLowerCase();
-
-                for (var i = 0; i < rows.length; i++) {
-                    var found = false;
-                    var cells = rows[i].getElementsByTagName('td');
-
-                    for (var j = 0; j < cells.length; j++) {
-                        var value = cells[j].innerText.toLowerCase();
-
-                        if (value.indexOf(search) >= 0) {
-                            found = true;
-                        }
-                    }
-
-                    if (found) {
-                        rows[i].style.display = 'table-row';
-                    } else {
-                        rows[i].style.display = 'none';
-                    }
-                }
-            });
-
-
-            /*
-            var tbody = document.getElementById('tbody');
-
-            document.getElementById('textSearch').addEventListener('keyup', function () {
-
-                var search = document.getElementById('textSearch').value.toLowerCase();
-
-                for (var i = 0; i < tbody.childNodes.length; i++) { // Acessar as Linhas
-                    var found = false;
-                    var tr = tbody.childNodes[i];
-
-                    var td = tr.childNodes;
-
-                    for (var j = 1; j < td.length; j++) { // Acessar as Colunas
-                        var value = td[j].childNodes[0].nodeValue.toLowerCase();
-
-                        if (value.indexOf(search) >= 0) {
-                            found = true;
-                        }
-                    }
-                    if (found) {
-                        tr.style.display = 'table-row';
-                    } else {
-                        tr.style.display = 'none';
-                    }
-                }
-            });*/
-        </script>
 </body>
 
 </html>

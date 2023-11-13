@@ -51,11 +51,12 @@
                 <div>
                     <label for="firstName">Nome*</label>
                     <input type="text" id="firstName" name="firstName" th:value="${account.firstName}" autofocus
-                        required>
+                        maxlength="40" required>
                 </div>
                 <div>
                     <label for="lastName">Sobrenome*</label>
-                    <input type="text" id="lastName" name="lastName" th:value="${account.lastName}" required>
+                    <input type="text" id="lastName" name="lastName" th:value="${account.lastName}" maxlength="100"
+                        required>
                 </div>
             </div>
 
@@ -65,22 +66,22 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="rg">RG</label>
-                        <input id="rg" type="text" name="rg" th:value="${account.rg}">
+                        <input id="rg" type="text" name="rg" th:value="${account.rg}" maxlength="10" required>
                     </div>
                     <div>
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" name="cpf" th:value="${account.cpf}">
+                        <input id="cpf" type="text" name="cpf" th:value="${account.cpf}" maxlength="11" required>
                     </div>
                 </div>
                 <!-- CNS e Data de Nascimento -->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="cns">CNS</label>
-                        <input id="cns" type="text" name="cns" th:value="${data.cns}">
+                        <input id="cns" type="text" name="cns" th:value="${data.cns}" maxlength="15" required>
                     </div>
                     <div>
                         <label for="dateBirth">Data de Nascimento</label>
-                        <input id="dateBirth" type="date" name="dateBirth" th:value="${data.dateBirth}">
+                        <input id="dateBirth" type="date" name="dateBirth" th:value="${data.dateBirth}" required>
                     </div>
                 </div>
             </div>
@@ -91,13 +92,13 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="street">Rua</label>
-                        <input id="street" type="text" name="street"
-                            th:value="${contact != null ? contact.street : ''}">
+                        <input id="street" type="text" name="street" th:value="${contact != null ? contact.street : ''}"
+                            maxlength="50" required>
                     </div>
                     <div>
                         <label for="number">Numero</label>
-                        <input id="number" type="text" name="number"
-                            th:value="${contact != null ? contact.number : ''}">
+                        <input id="number" type="text" name="number" th:value="${contact != null ? contact.number : ''}"
+                            maxlength="10" required>
                     </div>
                 </div>
                 <!-- Bairro e Cidade -->
@@ -105,11 +106,12 @@
                     <div>
                         <label for="neighborhood">Bairro</label>
                         <input id="neighborhood" type="text" name="neighborhood"
-                            th:value="${contact != null ? contact.neighborhood : ''}">
+                            th:value="${contact != null ? contact.neighborhood : ''}" maxlength="50" required>
                     </div>
                     <div>
                         <label for="city">Cidade</label>
-                        <input id="city" type="text" name="city" th:value="${contact != null ? contact.city : ''}">
+                        <input id="city" type="text" name="city" th:value="${contact != null ? contact.city : ''}"
+                            maxlength="50" required>
                     </div>
                 </div>
             </div>
@@ -119,12 +121,12 @@
                 <div>
                     <label for="cellPhone">Celular</label>
                     <input id="cellPhone" type="text" name="cellPhone"
-                        th:value="${contact != null ? contact.cellPhone : ''}">
+                        th:value="${contact != null ? contact.cellPhone : ''}" maxlength="15" required>
                 </div>
                 <div>
                     <label for="telephone">Telefone</label>
                     <input id="telephone" type="text" name="telephone"
-                        th:value="${contact != null ? contact.telephone : ''}">
+                        th:value="${contact != null ? contact.telephone : ''}" maxlength="15">
                 </div>
             </div>
 

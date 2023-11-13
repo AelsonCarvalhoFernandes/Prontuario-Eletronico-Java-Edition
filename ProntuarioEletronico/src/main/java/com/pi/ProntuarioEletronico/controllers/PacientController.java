@@ -108,7 +108,6 @@ public class PacientController {
 
         if (pacient == null) {
 
-            System.out.println("\n\n\n\n\n\n\n ID DO PACIENTE CONTROLLER: " + pacient); // Apagar
             ModelAndView mv = new ModelAndView("pacient/UpdatePacient");
             mv.addObject("Message", "Houve um erro ao atualizar o paciente");
             return mv;

@@ -21,7 +21,7 @@ public class ContactDataService {
         try {
 
             ContactModel contact = contactRepository.findByUser(model);
-            
+
             if (contact == null) {
                 return null;
             }
@@ -36,7 +36,7 @@ public class ContactDataService {
 
     public ContactModel create(ContactModel model) {
         try {
-
+            // System.out.println("\n\n\n\n\n\nSERVICE Contact: " + model);
             return contactRepository.save(model);
 
         } catch (Exception ex) {

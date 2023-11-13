@@ -44,11 +44,11 @@
             <div class="group-vertically group-horizontal">
                 <div>
                     <label for="firstName">Nome*</label>
-                    <input type="text" name="firstName" autofocus required>
+                    <input type="text" name="firstName" maxlength="40" autofocus required>
                 </div>
                 <div>
                     <label for="lastName">Sobrenome*</label>
-                    <input type="text" name="lastName" required>
+                    <input type="text" name="lastName" maxlength="100" required>
                 </div>
             </div>
 
@@ -58,22 +58,22 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="rg">RG</label>
-                        <input type="text" name="rg" required>
+                        <input type="text" name="rg" maxlength="10" required>
                     </div>
                     <div>
                         <label for="cpf">CPF</label>
-                        <input type="text" name="cpf">
+                        <input type="text" name="cpf" maxlength="11" required>
                     </div>
                 </div>
                 <!--CNS e Data de Nascimento-->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="cns">CNS</label>
-                        <input type="text" name="cns">
+                        <input type="text" name="cns" maxlength="15">
                     </div>
                     <div>
                         <label for="dateBirth">Data de Nascimento</label>
-                        <input type="Date" name="dateBirth">
+                        <input type="Date" name="dateBirth" required>
                     </div>
                 </div>
             </div>
@@ -84,22 +84,22 @@
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="street">Rua</label>
-                        <input type="text" name="street">
+                        <input type="text" name="street" maxlength="50" required>
                     </div>
                     <div>
                         <label for="number">Numero</label>
-                        <input type="text" name="number">
+                        <input type="text" name="number" maxlength="10" required>
                     </div>
                 </div>
                 <!--Bairro e Cidade-->
                 <div class="group-vertically group-horizontal space-top">
                     <div>
                         <label for="neighborhood">Bairro</label>
-                        <input type="text" name="neighborhood">
+                        <input type="text" name="neighborhood" maxlength="50" required>
                     </div>
                     <div>
                         <label for="city">Cidade</label>
-                        <input type="text" name="city">
+                        <input type="text" name="city" maxlength="50" required>
                     </div>
                 </div>
             </div>
@@ -108,11 +108,11 @@
             <div class="group-vertically group-horizontal space-top">
                 <div>
                     <label for="cellphone">Celular</label>
-                    <input id="cellPhone" type="text" name="cellPhone" required>
+                    <input id="cellPhone" type="text" name="cellPhone" maxlength="15" required>
                 </div>
                 <div>
                     <label for="telephone">Telefone</label>
-                    <input id="telephone" type="text" name="telephone">
+                    <input id="telephone" type="text" name="telephone" maxlength="15">
                 </div>
             </div>
 
@@ -125,11 +125,11 @@
             <div class="group-vertically group-horizontal space-top">
                 <div>
                     <label for="password">Senha*</label>
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <div>
                     <label for="confirmPassword">Confirme a senha*</label>
-                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
             </div>
             <p class="error-message" id="errorMessage"></p>
