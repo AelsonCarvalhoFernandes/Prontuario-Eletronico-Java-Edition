@@ -22,7 +22,7 @@ trello : https://trello.com/b/MwRJbxFe/prontu%C3%A1rio-eletr%C3%B4nico
 
 ### Features:
 
-- [V] Cadastro de usuários
+- [x] Cadastro de usuários
 - [X] Cadastro de receitas
 - [X] Cadastro de Atestados
 - [X] Cadastro de Laudos
