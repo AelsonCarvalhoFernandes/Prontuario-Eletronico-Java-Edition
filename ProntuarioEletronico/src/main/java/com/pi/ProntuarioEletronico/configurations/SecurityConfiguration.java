@@ -25,14 +25,6 @@ public class SecurityConfiguration {
                                                 .requestMatchers(HttpMethod.GET, "/", "index", "/about", "/login",
                                                                 "/admin/createAdmin", "/static/**")
                                                 .permitAll()
-                                                .requestMatchers(HttpMethod.POST, "/pacient/**").hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.GET, "/pacient/**", "/pacient/update/**")
-                                                .hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.POST, "/home").hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.GET, "/home").hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.GET, "/prescriptions/**").hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.POST, "/prescriptions/**").hasRole("DOCTOR")
-                                                .requestMatchers(HttpMethod.GET, "/laudos/**").hasRole("DOCTOR")
                                                 .anyRequest().permitAll()
 
                                 // .anyRequest().permitAll()

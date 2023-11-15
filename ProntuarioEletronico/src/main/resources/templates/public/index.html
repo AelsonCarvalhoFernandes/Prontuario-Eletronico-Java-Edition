@@ -12,23 +12,9 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
-    </div>
-    <nav class="navbar">
-      <ul class="nav-list">
-        <li><a th:href="@{/index}" class="nav-link">Home</a></li>
-        <li><a th:href="@{/about}" class="nav-link">Quem Somos</a></li>
-        <li><a th:href="@{/login}" class="nav-link">Login</a></li>
-      </ul>
-      <div class="hamburger">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-    </nav>
-  </header>
+
+  <div th:replace="Fragments/header"></div>
+  
   <main>
     <div class="container">
 

@@ -10,22 +10,46 @@
 
 <body>
 
-    <header>
+    <header sec:authorize="isAuthenticated()">
         <div class="logo">
             <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
         </div>
         <ul class="fontText">
             <li><a href="">MEUS DADOS</a></li>
-            <li><a href="/pacient/all">PACIENTES</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/pacient/all">PACIENTES</a></li>
 
             <li class="profile dropdown">
-                <a href="javascript:void(0)" class="dropbtn">PERFIL</a>
+                <a href="javascript:void(0)" class="dropbtn" sec:authentication="principal.email"></a>
+                    
+            
                 <div class="dropdown-content">
+                    <a href="/pergil">Perfil</a>
                     <a href="/logout">Sair</a>
+                    
                 </div>
             </li>
         </ul>
     </header>
+
+    <header sec:authorize="isAnonymous()">
+        <div class="logo">
+          <img src="../../static/assets/HomePage_img/logo.svg" alt="Logo">
+        </div>
+        <nav class="navbar">
+          <ul class="nav-list">
+            <li><a th:href="@{/index}" class="nav-link">Home</a></li>
+            <li><a th:href="@{/about}" class="nav-link">Quem Somos</a></li>
+            <li><a th:href="@{/login}" class="nav-link">Login</a></li>
+          </ul>
+          <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </nav>
+      </header>
+
+
 </body>
 
 </html>
